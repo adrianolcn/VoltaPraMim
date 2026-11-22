@@ -1,3 +1,6 @@
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
+Failed to create stream fd: Operation not permitted
 # VoltaPraMim
 
 Protótipo acadêmico de achados e perdidos para a comunidade da UCSal. Esta primeira versão permite cadastrar objetos encontrados, procurar itens ativos e consultar seus detalhes.
@@ -33,6 +36,6 @@ Abra <http://localhost:8080>. A aplicação inicia com três registros fictício
 
 O armazenamento é em memória. Upload de fotos, painel de operações, autenticação, CSRF nas ações administrativas e transições pela interface ainda não foram implementados. A referência pública serve apenas para localizar o registro e não prova propriedade. Este protótipo não representa um serviço oficial da UCSal.
 
-Os testes automatizados ainda serão adicionados; o roteiro manual registra as verificações previstas, sem resultados presumidos.
+Os testes automatizados cobrem regras de estado, cadastro, busca e filtros. O roteiro manual registra verificações complementares de produto que ainda precisam ser realizadas pela equipe.
 
 O PDF de especificação está em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf). Consulte também a [arquitetura](docs/arquitetura.md), as [decisões pendentes](docs/decisoes.md) e o [roteiro de teste manual](tests/roteiro-teste-manual.md).
