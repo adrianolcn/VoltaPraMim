@@ -36,4 +36,4 @@ Repository, Front Controller e Composition Root são escolhas arquiteturais; nã
 
 `POST /achei` → comando web → caso de uso `CadastrarItem` → fábrica e repositório → publicação de `ItemCadastrado` → observers → resposta HTTP.
 
-As regras e critérios detalhados estão no PDF de especificação incluído em [`especificacao/VoltaPraMim_V2.pdf`](especificacao/VoltaPraMim_V2.pdf).
+As regras e critérios detalhados estão no PDF de especificação incluído em [`especificacao/VoltaPraMim_Project.pdf`](especificacao/VoltaPraMim_Project.pdf).

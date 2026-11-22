@@ -1,6 +1,6 @@
 # VoltaPraMim
 
-Aplicação web de achados e perdidos para a comunidade acadêmica da UCSal. Este repositório começa a implementação descrita em [`docs/especificacao/VoltaPraMim_V2.pdf`](docs/especificacao/VoltaPraMim_V2.pdf).
+Aplicação web de achados e perdidos para a comunidade acadêmica da UCSal. Este repositório começa a implementação descrita em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf).
 
 > Estado inicial: estrutura de projeto e documentação. As funcionalidades e os testes ainda não foram implementados nem verificados.
 
