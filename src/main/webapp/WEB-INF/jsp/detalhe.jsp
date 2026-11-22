@@ -7,7 +7,12 @@
         <span class="badge badge-pending"><c:out value="${item.estadoRotulo}" /></span>
         <span class="item-category"><c:out value="${item.categoria.rotulo}" /></span>
     </div>
-    <h1><c:out value="${item.titulo}" /></h1>
+    <h1><c:out value="${item.titulo}" />
+    <c:if test="${not empty fotoUrl}">
+        <img class="item-photo"
+             src="<c:out value='${fotoUrl}' />"
+             alt="Foto do objeto encontrado">
+    </c:if></h1>
     <c:if test="${not empty item.descricao}"><p class="detail-description"><c:out value="${item.descricao}" /></p></c:if>
     <dl class="detail-list">
         <div><dt>Local encontrado</dt><dd><c:out value="${item.local.rotulo}" /></dd></div>

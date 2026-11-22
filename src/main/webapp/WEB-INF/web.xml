@@ -27,6 +27,7 @@
         <url-pattern>/buscar</url-pattern>
         <url-pattern>/achei</url-pattern>
         <url-pattern>/itens/*</url-pattern>
+        <url-pattern>/fotos/*</url-pattern>
         <url-pattern>/design-system</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

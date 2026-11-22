@@ -22,6 +22,7 @@ import br.ucsal.voltapramim.web.comandos.DesignSystemComando;
 import br.ucsal.voltapramim.web.comandos.InicioComando;
 import br.ucsal.voltapramim.web.comandos.NovoItemComando;
 import br.ucsal.voltapramim.web.comandos.SalvarItemComando;
+import br.ucsal.voltapramim.web.comandos.FotoComando;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 
@@ -82,7 +83,8 @@ public final class AppBootstrap implements ServletContextListener {
                 ROTEADOR,
                 new Roteador(
                         comandos,
-                        new DetalheComando(consultar)
+                        new DetalheComando(consultar),
+                        new FotoComando(fotos)
                 )
         );
     }
