@@ -3,7 +3,7 @@ Failed to create stream fd: Operation not permitted
 Failed to create stream fd: Operation not permitted
 # VoltaPraMim
 
-Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 17, Maven, Servlet/JSP e CSS/JavaScript puros. Os quatro itens mostrados são dados de demonstração em memória.
+Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 17, Maven, Servlet/JSP e CSS/JavaScript puros. A aplicação carrega itens fictícios de demonstração em memória.
 
 ## Requisitos
 
@@ -23,12 +23,12 @@ Abra <http://localhost:8080>. O servidor continua rodando no terminal; use `Ctrl
 
 ## Estrutura da página
 
-- `HomeServlet` carrega os itens e encaminha para `WEB-INF/views/index.jsp`.
-- `ItemRepository` fornece quatro registros em memória.
-- `static/css` contém tokens e estilos próprios; `static/js/home.js` faz a busca e os filtros instantâneos.
-- Não há banco de dados nem framework front-end.
+- `AppBootstrap` conecta um único `ItemRepositorioEmMemoria` ao cadastro, à busca e aos detalhes; `DadosDemonstracao` carrega os exemplos nesse repositório.
+- `FrontControllerServlet` e `Roteador` encaminham `/` e `/home` ao `InicioComando`, que consulta `BuscarItens` e renderiza `WEB-INF/views/index.jsp`. O cadastro e a busca usam a mesma fonte de dados.
+- A busca instantânea em `static/js/home.js` filtra os itens ativos renderizados; enviar o formulário abre a busca completa em `/buscar`.
+- Os dados ficam em memória e são apagados ao reiniciar. Não há banco de dados nem framework front-end.
 
-Os quatro itens da página inicial são exemplos independentes dos registros usados pelas páginas existentes de cadastro e busca.
+A especificação revisada menciona Java 21; este repositório usa Java 17. A versão definitiva deve ser confirmada pela equipe.
 
 ## Funcionalidades existentes
 

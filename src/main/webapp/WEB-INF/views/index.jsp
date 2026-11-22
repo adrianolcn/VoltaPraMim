@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!doctype html>
 <html lang="pt-BR">
@@ -31,19 +32,28 @@
                 <p class="eyebrow">Achados e perdidos · UCSal</p>
                 <h1 id="hero-title">Perdeu algo no campus? <span>Volta pra você.</span></h1>
                 <p class="hero-description">Procure entre os objetos encontrados pela comunidade ou registre algo que você achou.</p>
-                <form class="search-box" id="search-form" action="#itens" role="search">
+                <form class="search-box" id="search-form" action="${pageContext.request.contextPath}/buscar" method="get" role="search">
                     <label class="visually-hidden" for="item-search">Buscar por nome ou local</label>
-                    <input id="item-search" type="search" placeholder="Ex.: garrafa, chaveiro, estojo" autocomplete="off">
+                    <input id="item-search" name="q" type="search" placeholder="Ex.: garrafa, chaveiro, estojo" autocomplete="off">
                     <button class="button button-primary" type="submit">Buscar itens</button>
                 </form>
             </div>
 
             <aside class="found-tag" aria-label="Resumo dos itens encontrados">
-                <div class="tag-label">Achado em</div>
-                <div class="tag-place">Biblioteca</div>
-                <div class="tag-rule" aria-hidden="true"></div>
-                <div class="tag-count"><c:out value="${itemCount}"/> itens esperando o dono</div>
-                <div class="tag-reference">REF · VPM-QM9QS</div>
+                <c:choose>
+                    <c:when test="${not empty itens}">
+                        <div class="tag-label">Achado em</div>
+                        <div class="tag-place"><c:out value="${itens[0].local.rotulo}"/></div>
+                        <div class="tag-rule" aria-hidden="true"></div>
+                        <div class="tag-count"><c:out value="${fn:length(itens)}"/> itens cadastrados</div>
+                        <div class="tag-reference">REF · <c:out value="${itens[0].referenciaPublica}"/></div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="tag-label">Achados e perdidos</div>
+                        <div class="tag-rule" aria-hidden="true"></div>
+                        <div class="tag-count">Nenhum item cadastrado</div>
+                    </c:otherwise>
+                </c:choose>
             </aside>
         </section>
 
@@ -55,40 +65,32 @@
                 </div>
                 <div class="category-chips" role="group" aria-label="Filtrar por categoria">
                     <button class="category-chip is-active" type="button" data-category-filter="Todos" aria-pressed="true">Todos</button>
-                    <button class="category-chip" type="button" data-category-filter="Acessórios" aria-pressed="false">Acessórios</button>
-                    <button class="category-chip" type="button" data-category-filter="Chaves" aria-pressed="false">Chaves</button>
-                    <button class="category-chip" type="button" data-category-filter="Eletrônicos" aria-pressed="false">Eletrônicos</button>
-                    <button class="category-chip" type="button" data-category-filter="Outros" aria-pressed="false">Outros</button>
+                    <c:forEach var="categoria" items="${categorias}">
+                        <button class="category-chip" type="button" data-category-filter="<c:out value='${categoria.name()}'/>" aria-pressed="false"><c:out value="${categoria.rotulo}"/></button>
+                    </c:forEach>
                 </div>
             </div>
 
             <p class="visually-hidden" id="results-announcement" aria-live="polite"></p>
             <div class="items-grid" id="items-grid">
-                <c:forEach var="item" items="${items}">
+                <c:forEach var="item" items="${itens}">
                     <article class="item-card" data-item-card
-                             data-title="<c:out value='${item.title}'/>"
-                             data-place="<c:out value='${item.place}'/>"
-                             data-category="<c:out value='${item.category}'/>">
+                             data-title="<c:out value='${item.titulo}'/>"
+                             data-place="<c:out value='${item.local.rotulo}'/>"
+                             data-category="<c:out value='${item.categoria.name()}'/>">
                         <div class="item-meta">
-                            <c:choose>
-                                <c:when test="${item.status eq 'aguardando'}">
-                                    <span class="status-badge status-waiting"><span class="status-dot" aria-hidden="true"></span>Aguardando dono</span>
-                                </c:when>
-                                <c:otherwise>
-                                    <span class="status-badge status-returned"><span class="status-dot" aria-hidden="true"></span>Devolvido</span>
-                                </c:otherwise>
-                            </c:choose>
-                            <span class="item-when"><c:out value="${item.when}"/></span>
+                            <span class="status-badge status-waiting"><span class="status-dot" aria-hidden="true"></span><c:out value="${item.estadoRotulo}"/></span>
                         </div>
-                        <h3 class="item-title"><c:out value="${item.title}"/></h3>
-                        <p class="item-location"><span aria-hidden="true">📍</span> <c:out value="${item.place}"/> · <c:out value="${item.category}"/></p>
+                        <h3 class="item-title"><c:out value="${item.titulo}"/></h3>
+                        <p class="item-location"><span aria-hidden="true">📍</span> <c:out value="${item.local.rotulo}"/> · <c:out value="${item.categoria.rotulo}"/></p>
                         <div class="item-footer">
-                            <span class="item-reference"><c:out value="${item.ref}"/></span>
-                            <a class="item-claim" href="#registrar">É meu <span aria-hidden="true">→</span></a>
+                            <span class="item-reference"><c:out value="${item.referenciaPublica}"/></span>
+                            <c:url var="detalheUrl" value="/itens/${item.id}"/>
+                            <a class="item-claim" href="<c:out value='${detalheUrl}'/>">Ver detalhes <span aria-hidden="true">→</span></a>
                         </div>
                     </article>
                 </c:forEach>
-                <div class="empty-state" id="empty-state" hidden>
+                <div class="empty-state" id="empty-state" ${not empty itens ? "hidden" : ""}>
                     Nenhum item encontrado. Tente outra palavra.
                 </div>
             </div>

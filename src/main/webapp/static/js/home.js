@@ -1,6 +1,5 @@
 (() => {
     const searchInput = document.querySelector("#item-search");
-    const searchForm = document.querySelector("#search-form");
     const cards = [...document.querySelectorAll("[data-item-card]")];
     const chips = [...document.querySelectorAll("[data-category-filter]")];
     const emptyState = document.querySelector("#empty-state");
@@ -33,10 +32,6 @@
     };
 
     searchInput.addEventListener("input", applyFilters);
-    searchForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        document.querySelector("#itens").scrollIntoView({ behavior: "smooth" });
-    });
 
     chips.forEach((chip) => {
         chip.addEventListener("click", () => {
