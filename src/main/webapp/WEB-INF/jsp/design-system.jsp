@@ -68,4 +68,33 @@
     </div>
 </section>
 
+<section class="design-section" aria-labelledby="status-title">
+    <p class="eyebrow">Componente</p>
+    <h2 id="status-title">Status do item</h2>
+    <p>
+        Cada status possui texto e cor. A cor nunca é a única forma
+        de comunicar o estado.
+    </p>
+
+    <div class="design-examples">
+        <div class="design-example">
+            <span class="badge badge-pending">
+                Aguardando entrega
+            </span>
+        </div>
+
+        <div class="design-example">
+            <span class="badge badge-available">
+                Disponível para retirada
+            </span>
+        </div>
+
+        <div class="design-example">
+            <span class="badge badge-returned">
+                Devolvido
+            </span>
+        </div>
+    </div>
+</section>
+
 <%@ include file="rodape.jspf" %>
