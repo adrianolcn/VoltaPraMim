@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 package br.ucsal.voltapramim.aplicacao;
 
 import br.ucsal.voltapramim.dominio.Categoria;
@@ -28,7 +25,7 @@ class BuscarItensTest {
         var resultado = busca.executar("MOCHÍLA", "BOLSAS", "BIBLIOTECA");
 
         assertEquals(1, resultado.size());
-        assertEquals(mochila.getId(), resultado.getFirst().getId());
+        assertEquals(mochila.getId(), resultado.get(0).getId());
     }
 
     @Test
@@ -41,6 +38,6 @@ class BuscarItensTest {
         var resultado = busca.executar(" ", "CHAVES", null);
 
         assertEquals(1, resultado.size());
-        assertEquals("Chave", resultado.getFirst().getTitulo());
+        assertEquals("Chave", resultado.get(0).getTitulo());
     }
 }

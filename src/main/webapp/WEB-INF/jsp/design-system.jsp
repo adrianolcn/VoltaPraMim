@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ include file="cabecalho.jspf" %>
 <section class="page-intro">
     <p class="eyebrow">Interface</p>

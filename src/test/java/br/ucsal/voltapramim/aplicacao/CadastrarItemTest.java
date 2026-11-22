@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 package br.ucsal.voltapramim.aplicacao;
 
 import br.ucsal.voltapramim.aplicacao.porta.OuvinteDeEvento;
@@ -32,9 +29,9 @@ class CadastrarItemTest {
         assertTrue(Pattern.matches("VPM-[A-HJ-NP-Z2-9]{5}", item.getReferenciaPublica()));
         assertTrue(repositorio.buscarPorId(item.getId()).isPresent());
         assertEquals(1, eventos.publicados.size());
-        assertTrue(eventos.publicados.getFirst() instanceof ItemCadastrado);
+        assertTrue(eventos.publicados.get(0) instanceof ItemCadastrado);
         assertTrue(eventos.itemJaEstavaPersistido);
-        assertEquals(item.getId(), ((ItemCadastrado) eventos.publicados.getFirst()).itemId());
+        assertEquals(item.getId(), ((ItemCadastrado) eventos.publicados.get(0)).itemId());
     }
 
     private static final class PublicadorDeEventosFake implements PublicadorDeEventos {

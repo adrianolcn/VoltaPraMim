@@ -3,11 +3,11 @@ Failed to create stream fd: Operation not permitted
 Failed to create stream fd: Operation not permitted
 # VoltaPraMim
 
-Protótipo acadêmico de achados e perdidos para a comunidade da UCSal. Esta primeira versão permite cadastrar objetos encontrados, procurar itens ativos e consultar seus detalhes.
+Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 17, Maven, Servlet/JSP e CSS/JavaScript puros. Os quatro itens mostrados são dados de demonstração em memória.
 
 ## Requisitos
 
-- JDK 21
+- JDK 17
 - Maven 3.9+
 
 ## Executar localmente
@@ -19,9 +19,18 @@ mvn test
 mvn jetty:run
 ```
 
-Abra <http://localhost:8080>. A aplicação inicia com três registros fictícios para demonstração. Os dados novos ficam em memória e são apagados ao reiniciar o servidor.
+Abra <http://localhost:8080>. O servidor continua rodando no terminal; use `Ctrl+C` para pará-lo. Os dados de demonstração são recriados a cada inicialização.
 
-## O que já funciona
+## Estrutura da página
+
+- `HomeServlet` carrega os itens e encaminha para `WEB-INF/views/index.jsp`.
+- `ItemRepository` fornece quatro registros em memória.
+- `static/css` contém tokens e estilos próprios; `static/js/home.js` faz a busca e os filtros instantâneos.
+- Não há banco de dados nem framework front-end.
+
+Os quatro itens da página inicial são exemplos independentes dos registros usados pelas páginas existentes de cadastro e busca.
+
+## Funcionalidades existentes
 
 - Página inicial com itens recentes.
 - Cadastro público com título, descrição, categoria e local.

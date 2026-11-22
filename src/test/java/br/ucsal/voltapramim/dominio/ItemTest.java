@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 package br.ucsal.voltapramim.dominio;
 
 import br.ucsal.voltapramim.dominio.TransicaoInvalidaException;
