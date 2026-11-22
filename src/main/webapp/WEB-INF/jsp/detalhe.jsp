@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ include file="cabecalho.jspf" %>
 <c:url var="buscarUrl" value="/buscar" />
 <p><a class="text-link" href="${buscarUrl}">← Voltar à busca</a></p>

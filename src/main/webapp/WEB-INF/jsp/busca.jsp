@@ -1,3 +1,4 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ include file="cabecalho.jspf" %>
 <c:url var="buscarUrl" value="/buscar" />
 <section class="page-intro">
