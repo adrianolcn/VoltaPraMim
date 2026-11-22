@@ -1,0 +1,13 @@
+target/
+*.class
+*.jar
+*.war
+.env
+.env.*.local
+!.env.example
+uploads/
+data/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
