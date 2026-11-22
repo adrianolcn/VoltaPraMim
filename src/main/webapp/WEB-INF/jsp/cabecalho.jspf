@@ -1,0 +1,28 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:url var="cssTokens" value="/assets/css/tokens.css" />
+<c:url var="cssApp" value="/assets/css/app.css" />
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value="${tituloPagina}" default="VoltaPraMim" /></title>
+    <link rel="stylesheet" href="${cssTokens}">
+    <link rel="stylesheet" href="${cssApp}">
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="<c:url value='/' />" aria-label="VoltaPraMim, página inicial">
+            <span class="brand-mark" aria-hidden="true">↩</span>
+            <span>VoltaPraMim</span>
+        </a>
+        <nav aria-label="Navegação principal">
+            <a href="<c:url value='/buscar' />">Buscar</a>
+            <a class="button button-small" href="<c:url value='/achei' />">Encontrei um item</a>
+        </nav>
+    </div>
+</header>
+<main id="conteudo" class="container page-content">
