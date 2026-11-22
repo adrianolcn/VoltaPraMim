@@ -1,13 +1,26 @@
+# Maven / Java
 target/
 *.class
 *.jar
 *.war
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Ambiente local e dados de demonstração
 .env
 .env.*.local
 !.env.example
 uploads/
 data/
-.idea/
-.vscode/
+*.log
+
+# Sistema operacional
 .DS_Store
 Thumbs.db
+

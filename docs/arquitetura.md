@@ -1,5 +1,9 @@
 # Arquitetura
 
+## Estado da primeira versão
+
+O fluxo público já está implementado: cadastro em memória, busca por relevância ou recentes e consulta de detalhes. O roteador mapeia caminhos para comandos; o bootstrap conecta repositório, estratégias e observadores. Fotos, painel de operações e transições administrativas pela interface ficam para etapas seguintes.
+
 ## Direção das dependências
 
 O sistema é organizado em camadas. O domínio contém as regras do ciclo de vida do item e não depende de Servlet, JSP, repositórios, uploads ou bibliotecas de infraestrutura. Os casos de uso dependem de portas; as implementações concretas são conectadas na Composition Root em `config`.

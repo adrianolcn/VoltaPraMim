@@ -1,59 +1,38 @@
 # VoltaPraMim
 
-Aplicação web de achados e perdidos para a comunidade acadêmica da UCSal. Este repositório começa a implementação descrita em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf).
+Protótipo acadêmico de achados e perdidos para a comunidade da UCSal. Esta primeira versão permite cadastrar objetos encontrados, procurar itens ativos e consultar seus detalhes.
 
-> Estado inicial: estrutura de projeto e documentação. As funcionalidades e os testes ainda não foram implementados nem verificados.
+## Requisitos
 
-## Stack prevista
+- JDK 21
+- Maven 3.9+
 
-- Java 21 e Maven 3.9+
-- Jakarta Servlet 6 / JSP
-- Jetty 12 (Jakarta EE 10) para execução local
-- Armazenamento em memória no MVP; H2 é uma evolução opcional
-- JUnit 5 para os testes automatizados
+## Executar localmente
 
-## Preparação
-
-Instale um JDK 21 e Maven 3.9 ou superior. Depois, na raiz do projeto:
+Na raiz do projeto:
 
 ```sh
 mvn test
 mvn jetty:run
 ```
 
-A aplicação ficará disponível em <http://localhost:8080>. Nenhum teste foi executado nesta etapa; o esqueleto de implementação ainda está sendo montado.
+Abra <http://localhost:8080>. A aplicação inicia com três registros fictícios para demonstração. Os dados novos ficam em memória e são apagados ao reiniciar o servidor.
 
-## Organização
+## O que já funciona
 
-```text
-src/main/java/br/ucsal/voltapramim/
-  dominio/          entidades, estados e eventos de domínio
-  aplicacao/        casos de uso e portas
-  infraestrutura/   repositórios, busca, eventos, fotos e dados de demonstração
-  web/              Front Controller, comandos, filtros e rotas
-  config/           composição das dependências
-src/main/webapp/    JSPs, tags e recursos estáticos
-src/test/java/      testes de domínio, padrões e camada web
-docs/               arquitetura, validação, design system e decisões
-tests/              roteiro de teste manual
-```
+- Página inicial com itens recentes.
+- Cadastro público com título, descrição, categoria e local.
+- Busca sem diferenciar maiúsculas/minúsculas ou acentos; filtros de categoria e local podem ser combinados.
+- Página de detalhes com referência pública e status.
+- Ciclo de vida modelado com State. Os itens começam como “Aguardando entrega” e esse estado não promete retirada.
+- Busca por relevância e por itens recentes usando Strategy.
+- Eventos de cadastro com observers para auditoria e contagem.
+- Despacho HTTP por comandos.
 
-## Escopo do MVP
+## Limites desta versão
 
-1. Cadastrar item achado com referência pública única e estado inicial “Aguardando entrega”.
-2. Buscar por texto ignorando caixa e acentos, com filtros por categoria e local.
-3. Confirmar recebimento e registrar devolução somente após verificação de posse por atendente.
-4. Exibir somente itens ativos na busca pública; documentos não podem receber foto.
-5. Demonstrar os padrões State, Observer, Strategy e Command. Decorator para sinônimos é opcional.
+O armazenamento é em memória. Upload de fotos, painel de operações, autenticação, CSRF nas ações administrativas e transições pela interface ainda não foram implementados. A referência pública serve apenas para localizar o registro e não prova propriedade. Este protótipo não representa um serviço oficial da UCSal.
 
-O código público localiza um registro, mas não comprova propriedade. O atendimento da Sala de Operações deve ser tratado como simulado até que haja confirmação real.
+Os testes automatizados ainda serão adicionados; o roteiro manual registra as verificações previstas, sem resultados presumidos.
 
-## Documentação
-
-- [Arquitetura e decisões](docs/arquitetura.md)
-- [Registro de decisões pendentes](docs/decisoes.md)
-- [Plano de validação](docs/validacao.md)
-- [Design System](docs/design-system.md)
-- [Declaração de IA e terceiros](docs/declaracao-ia-terceiros.md)
-- [Roteiro de teste manual](tests/roteiro-teste-manual.md)
-
+O PDF de especificação está em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf). Consulte também a [arquitetura](docs/arquitetura.md), as [decisões pendentes](docs/decisoes.md) e o [roteiro de teste manual](tests/roteiro-teste-manual.md).
