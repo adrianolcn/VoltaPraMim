@@ -26,6 +26,7 @@ public final class FrontControllerServlet extends HttpServlet {
 
     private void despachar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String caminho = request.getRequestURI().substring(request.getContextPath().length());
         ComandoWeb comando = roteador.resolver(request.getMethod(), caminho).orElse(null);
         if (comando == null) { response.sendError(HttpServletResponse.SC_NOT_FOUND); return; }
