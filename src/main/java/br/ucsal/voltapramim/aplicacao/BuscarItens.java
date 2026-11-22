@@ -25,4 +25,8 @@ public final class BuscarItens {
         MotorDeBusca estrategia = consulta.texto().isBlank() ? recentes : porRelevancia;
         return estrategia.buscar(repositorio.listarAtivos(), consulta);
     }
+
+    public List<Item> executar(ConsultaItens consultaItens) {
+        return List.of();
+    }
 }

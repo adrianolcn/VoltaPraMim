@@ -8,6 +8,8 @@ import br.ucsal.voltapramim.infraestrutura.busca.BuscaRecentes;
 import br.ucsal.voltapramim.infraestrutura.persistencia.ItemRepositorioEmMemoria;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BuscarItensTest {
@@ -39,5 +41,44 @@ class BuscarItensTest {
 
         assertEquals(1, resultado.size());
         assertEquals("Chave", resultado.get(0).getTitulo());
+    }
+
+    @Test
+    void buscaSemTextoOrdenaItensDoMaisRecenteParaOMaisAntigo() {
+        ItemRepositorioEmMemoria repositorio = new ItemRepositorioEmMemoria();
+
+        Item primeiro = new Item(
+                "VPM-AAAAA",
+                "Mochila",
+                "",
+                Categoria.BOLSAS,
+                LocalCampus.BIBLIOTECA
+        );
+
+        Item segundo = new Item(
+                "VPM-BBBBB",
+                "Chave",
+                "",
+                Categoria.CHAVES,
+                LocalCampus.CANTINA
+        );
+
+        repositorio.salvar(primeiro);
+        repositorio.salvar(segundo);
+
+        BuscarItens buscar = new BuscarItens(
+                repositorio,
+                new BuscaPorRelevancia(),
+                new BuscaRecentes()
+        );
+
+        List<Item> resultado = buscar.executar(
+                new ConsultaItens("", null, null)
+        );
+
+        assertEquals(
+                List.of(segundo.getId(), primeiro.getId()),
+                resultado.stream().map(Item::getId).toList()
+        );
     }
 }
