@@ -4,17 +4,12 @@ import br.ucsal.voltapramim.aplicacao.ItemNaoEncontradoException;
 import br.ucsal.voltapramim.config.AppBootstrap;
 import br.ucsal.voltapramim.dominio.TransicaoInvalidaException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@MultipartConfig(
-        maxFileSize = 5 * 1024 * 1024,
-        maxRequestSize = 6 * 1024 * 1024
-)
 public final class FrontControllerServlet extends HttpServlet {
     private Roteador roteador;
 
