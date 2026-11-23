@@ -51,8 +51,6 @@ public final class SalvarItemComando implements ComandoWeb {
             response.sendRedirect(
                     request.getContextPath() + "/itens/" + item.getId()
             );
-        } catch (IllegalStateException erro) {
-            CadastroComando.mostrarErro(request, response, "A foto deve ter no máximo 5 MiB.");
         } catch (IllegalArgumentException erro) {
             CadastroComando.mostrarErro(
                     request,
