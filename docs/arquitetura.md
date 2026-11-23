@@ -2,7 +2,7 @@
 
 ## Estado da primeira versão
 
-O fluxo público inclui cadastro em memória, página inicial, busca por relevância ou recentes e consulta de detalhes. `AppBootstrap` cria um repositório compartilhado e carrega os dados fictícios uma única vez. `FrontControllerServlet` e `Roteador` despacham `/` e `/home` para `InicioComando`, que usa `BuscarItens` e encaminha os itens ativos à nova JSP. O cadastro e os detalhes usam o mesmo repositório. Fotos, painel de operações e transições administrativas pela interface ficam para etapas seguintes.
+O fluxo público inclui cadastro em memória, página inicial, busca por relevância ou recentes, consulta de detalhes e fotos opcionais. `AppBootstrap` cria um repositório compartilhado e carrega os dados fictícios uma única vez. `FrontControllerServlet` e `Roteador` despacham rotas públicas e administrativas para seus comandos. O cadastro, a busca, os detalhes e o painel usam o mesmo repositório. O painel implementa autenticação demonstrativa, CSRF, recebimento e devolução com atualização atômica por item.
 
 O projeto usa Java 17; a especificação revisada menciona Java 21. A versão definitiva permanece uma decisão a confirmar.
 
@@ -20,10 +20,11 @@ web → aplicação → domínio
 
 ## Limites do MVP
 
-- Repositório em memória; atualização atômica de transições por item ainda precisa ser implementada.
-- Fotos privadas com validação por conteúdo e tamanho (limite de 5 MB) estão pendentes.
+- Repositório em memória; itens são descartados ao reiniciar o servidor.
+- Fotos são armazenadas fora da área web com UUID e validação de conteúdo e tamanho (limite de 5 MiB); a limpeza dos arquivos não é automatizada.
 - Dados demonstrativos sempre fictícios.
-- Painel de operações com sessão e proteção CSRF está pendente; o fluxo será simulado até confirmação institucional.
+- Painel de operações é uma simulação acadêmica com senha compartilhada configurada via `VPM_OPERACOES_SENHA`; não há contas individuais, integração institucional ou aceite formal da Sala de Operações.
+- Sessões usam cookie `HttpOnly` e expiram após 30 minutos; mutações administrativas e login exigem token CSRF.
 - Nenhum dado pessoal de quem encontrou aparece no domínio ou na interface pública.
 
 ## Padrões a demonstrar
