@@ -28,6 +28,30 @@ h2 { display: flex; gap: .9rem; align-items: baseline; margin: 0 0 2rem; font-si
 .field-heading { display: flex; justify-content: space-between; gap: .5rem; }
 .field-heading > span, .help, .drop-hint { color: var(--muted-foreground); font-size: .875rem; }
 input:not([type=file]), select, textarea { width: 100%; min-height: 3.5rem; padding: .85rem 1rem; border: 1px solid var(--input); border-radius: var(--radius-lg); background: var(--card); color: var(--foreground); }
+select { appearance: none; padding-right: 3rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='m5 7.5 5 5 5-5' stroke='%230f4b39' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.1rem; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease; }
+select:hover { border-color: color-mix(in oklab, var(--primary) 42%, var(--input)); }
+select:focus-visible { outline: 0; border-color: var(--primary); box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 13%, transparent); }
+select:required:invalid { color: var(--muted-foreground); }
+select option { color: var(--foreground); background: var(--card); }
+select option[value=""] { color: var(--muted-foreground); }
+.select-control { position: relative; width: 100%; }
+.select-control.is-open { z-index: 10; }
+.select-native-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
+.select-trigger { display: flex; width: 100%; min-height: 3.5rem; align-items: center; justify-content: space-between; gap: .75rem; padding: .85rem 1rem; border: 1px solid var(--input); border-radius: var(--radius-lg); background: var(--card); color: var(--foreground); text-align: left; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease; }
+.select-trigger:hover { border-color: color-mix(in oklab, var(--primary) 42%, var(--input)); }
+.select-trigger:focus-visible { outline: 0; border-color: var(--primary); box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 13%, transparent); }
+.select-trigger.is-placeholder { color: var(--muted-foreground); }
+.select-trigger::after { content: ""; width: .55rem; height: .55rem; flex: 0 0 .55rem; margin: -.25rem .1rem 0 0; border-right: 1.8px solid var(--primary); border-bottom: 1.8px solid var(--primary); transform: rotate(45deg); transition: transform .18s ease, margin .18s ease; }
+.select-trigger[aria-expanded="true"] { border-color: var(--primary); box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 11%, transparent); }
+.select-trigger[aria-expanded="true"]::after { margin-top: .3rem; transform: rotate(225deg); }
+.select-menu { position: absolute; z-index: 20; top: calc(100% + .45rem); left: 0; width: 100%; max-height: min(15rem, calc(100vh - 2rem)); overflow-y: auto; overscroll-behavior: contain; padding: .35rem; border: 1px solid var(--border); border-radius: 13px; background: var(--card); box-shadow: 0 12px 28px rgb(24 42 33 / 13%), 0 2px 6px rgb(24 42 33 / 5%); }
+.select-menu[hidden] { display: none; }
+.select-option { position: relative; display: flex; width: 100%; min-height: 2.65rem; align-items: center; padding: .55rem 2.5rem .55rem .8rem; border: 0; border-radius: 8px; background: transparent; color: var(--foreground); font: inherit; text-align: left; cursor: pointer; transition: background-color .15s ease, color .15s ease; }
+.select-option[aria-selected="true"] { background: color-mix(in oklab, var(--secondary) 72%, var(--card)); color: var(--primary); font-weight: 700; }
+.select-option[aria-selected="true"]::after { content: "✓"; position: absolute; right: .85rem; color: var(--primary); font-size: .9rem; font-weight: 800; }
+.select-option.is-active, .select-option:hover { background: color-mix(in oklab, var(--secondary) 48%, var(--card)); }
+.select-option[aria-selected="true"].is-active { background: color-mix(in oklab, var(--secondary) 78%, var(--card)); }
+.select-error { margin: .4rem 0 0; color: var(--destructive); font-size: .875rem; }
 textarea { min-height: 8rem; resize: vertical; }
 input::placeholder, textarea::placeholder { color: var(--muted-foreground); opacity: 1; }
 .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
