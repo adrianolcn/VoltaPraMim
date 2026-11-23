@@ -68,6 +68,6 @@ A especificação revisada menciona Java 21; este repositório usa Java 17. A ve
 
 O armazenamento é em memória e os itens são apagados ao reiniciar. As fotos podem permanecer no diretório local configurado por `VPM_FOTOS_DIR`; a limpeza desse diretório ainda não é automatizada. O painel `/operacoes` funciona como **simulação acadêmica**: utiliza credencial única de demonstração via ambiente, sem contas individuais, sem integração institucional com sistemas da UCSal e sem aceite formal da Sala de Operações.
 
-Os testes automatizados (`mvn test` — 57 testes aprovados) cobrem regras de estado, eventos e observadores, busca e filtros, upload de fotos, roteamento, autenticação e proteção CSRF. O roteiro manual registra verificações complementares de produto e operação.
+Os testes automatizados (`mvn test` — 58 testes aprovados na revisão de 23/11/2026) cobrem regras de estado, eventos e observadores, busca e filtros, upload de fotos, roteamento, autenticação e proteção CSRF. O roteiro manual registra verificações complementares de produto e operação.
 
 O PDF de especificação está em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf). Consulte também a [arquitetura](docs/arquitetura.md), as [decisões pendentes](docs/decisoes.md), o [plano de validação](docs/validacao.md) e o [roteiro de teste manual](tests/roteiro-teste-manual.md).

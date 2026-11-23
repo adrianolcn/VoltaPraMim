@@ -12,6 +12,6 @@ As hipóteses de produto abaixo dependem de testes externos com usuários e conv
 
 | Data | Verificação | Resultado real | Evidência / observações |
 | --- | --- | --- | --- |
-| 23/11/2026 | Suíte automatizada JUnit (`mvn test`) | Aprovado (57 testes; 0 falhas, 0 erros, 0 ignorados) | Executado nesta revisão no worktree `pr18-review`. |
+| 23/11/2026 | Suíte automatizada JUnit (`mvn test`) | Aprovado (58 testes; 0 falhas, 0 erros, 0 ignorados) | Executado nesta revisão no worktree `pr18-review`. |
 | 23/11/2026 | Empacotamento (`mvn package`) | Aprovado | WAR gerado em `target/voltapramim.war` nesta revisão. |
 | — | Fluxo completo no navegador (`mvn jetty:run`) | Pendente | O roteiro manual descreve os passos; navegador/Jetty não foram verificados nesta revisão. |

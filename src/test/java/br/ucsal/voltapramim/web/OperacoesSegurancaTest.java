@@ -133,6 +133,28 @@ class OperacoesSegurancaTest {
     }
 
     @Test
+    void csrfFilterProtegeTambemOPostDeLogin() throws Exception {
+        CsrfOperacoesFilter filtro = new CsrfOperacoesFilter();
+        SimuladorSessao sessao = new SimuladorSessao();
+        AtomicBoolean cadeiaExecutada = new AtomicBoolean(false);
+        FilterChain chain = (req, res) -> cadeiaExecutada.set(true);
+
+        SimuladorHttp getLogin = new SimuladorHttp("GET", "/operacoes/login", sessao);
+        filtro.doFilter(getLogin.request(), getLogin.response(), chain);
+        String token = (String) getLogin.attrs.get("csrfToken");
+        assertNotNull(token);
+
+        SimuladorHttp postSemToken = new SimuladorHttp("POST", "/operacoes/login", sessao);
+        filtro.doFilter(postSemToken.request(), postSemToken.response(), chain);
+        assertEquals(403, postSemToken.statusCode.get());
+
+        SimuladorHttp postComToken = new SimuladorHttp("POST", "/operacoes/login", sessao);
+        postComToken.params.put("csrfToken", token);
+        filtro.doFilter(postComToken.request(), postComToken.response(), chain);
+        assertTrue(cadeiaExecutada.get());
+    }
+
+    @Test
     void fluxoOperacoesRecebeVerificaPosseDevolveEPublicaEventos(@TempDir Path pasta) throws Exception {
         var repositorio = new ItemRepositorioEmMemoria();
         var publicador = new PublicadorEmMemoria();
