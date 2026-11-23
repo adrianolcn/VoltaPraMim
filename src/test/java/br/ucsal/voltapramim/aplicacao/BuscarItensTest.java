@@ -76,9 +76,23 @@ class BuscarItensTest {
                 new ConsultaItens("", null, null)
         );
 
-        assertEquals(
-                List.of(segundo.getId(), primeiro.getId()),
-                resultado.stream().map(Item::getId).toList()
-        );
+        assertEquals(2, resultado.size());
+        assertEquals(java.util.Set.of(primeiro.getId(), segundo.getId()),
+                resultado.stream().map(Item::getId).collect(java.util.stream.Collectors.toSet()));
+        org.junit.jupiter.api.Assertions.assertFalse(resultado.get(0).getEncontradoEm().isBefore(resultado.get(1).getEncontradoEm()));
+    }
+    @Test
+    void aplicaFiltrosEExcluiDevolvidosNasDuasEstrategias() {
+        var repositorio = new ItemRepositorioEmMemoria();
+        var ativo = new Item("VPM-A", "Chave azul", "", Categoria.CHAVES, LocalCampus.CANTINA);
+        var devolvido = new Item("VPM-B", "Chave azul", "", Categoria.CHAVES, LocalCampus.CANTINA);
+        devolvido.confirmarRecebimento();
+        devolvido.registrarDevolucao();
+        repositorio.salvar(ativo);
+        repositorio.salvar(devolvido);
+        var buscar = new BuscarItens(repositorio, new BuscaPorRelevancia(), new BuscaRecentes());
+        assertEquals(List.of(ativo), buscar.executar("", "CHAVES", "CANTINA"));
+        assertEquals(List.of(ativo), buscar.executar("CHÁVE", "CHAVES", "CANTINA"));
+        assertEquals(List.of(), buscar.executar("chave", "CHAVES", "BIBLIOTECA"));
     }
 }

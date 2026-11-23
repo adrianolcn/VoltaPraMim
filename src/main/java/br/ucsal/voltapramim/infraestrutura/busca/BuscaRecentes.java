@@ -16,8 +16,7 @@ public final class BuscaRecentes implements MotorDeBusca {
     ) {
         return itens.stream()
                 .filter(Item::isVisivelNaBusca)
-                .filter(item -> aceitaCategoria(item, consulta))
-                .filter(item -> aceitaLocal(item, consulta))
+                .filter(item -> aceitaFiltros(item, consulta))
                 .sorted(
                         Comparator.comparing(Item::getEncontradoEm)
                                 .reversed()
@@ -25,19 +24,8 @@ public final class BuscaRecentes implements MotorDeBusca {
                 .toList();
     }
 
-    private boolean aceitaCategoria(
-            Item item,
-            ConsultaItens consulta
-    ) {
-        return consulta.categoria() == null
-                || item.getCategoria() == consulta.categoria();
-    }
-
-    private boolean aceitaLocal(
-            Item item,
-            ConsultaItens consulta
-    ) {
-        return consulta.local() == null
-                || item.getLocal() == consulta.local();
+    static boolean aceitaFiltros(Item item, ConsultaItens consulta) {
+        return (consulta.categoria() == null || item.getCategoria() == consulta.categoria())
+                && (consulta.local() == null || item.getLocal() == consulta.local());
     }
 }
