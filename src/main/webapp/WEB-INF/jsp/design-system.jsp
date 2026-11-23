@@ -89,6 +89,69 @@
         </article>
     </section>
 
+    <section class="ds-section" aria-labelledby="ds-operations-title">
+        <div class="ds-section-heading">
+            <div>
+                <p class="eyebrow">Operações</p>
+                <h2 id="ds-operations-title">Painel de atendimento</h2>
+            </div>
+            <p>Resumo por etapa, filas de trabalho e ações que deixam claro o próximo passo do atendimento.</p>
+        </div>
+
+        <div class="ds-ops-summary" aria-label="Resumo das etapas">
+            <article class="ds-ops-summary-card ds-ops-summary-waiting">
+                <span class="ds-ops-summary-icon" aria-hidden="true">◷</span>
+                <div><span class="ds-ops-summary-label">Aguardando entrega</span><strong>03</strong></div>
+                <p>Aguardam confirmação presencial</p>
+            </article>
+            <article class="ds-ops-summary-card ds-ops-summary-available">
+                <span class="ds-ops-summary-icon" aria-hidden="true">✓</span>
+                <div><span class="ds-ops-summary-label">Disponíveis para retirada</span><strong>02</strong></div>
+                <p>Aguardam identificação do proprietário</p>
+            </article>
+            <article class="ds-ops-summary-card ds-ops-summary-returned">
+                <span class="ds-ops-summary-icon" aria-hidden="true">↗</span>
+                <div><span class="ds-ops-summary-label">Devolvidos</span><strong>08</strong></div>
+                <p>Concluídos nesta sessão</p>
+            </article>
+        </div>
+
+        <div class="ds-ops-workflow-grid">
+            <article class="ds-ops-stage">
+                <header class="ds-ops-stage-heading">
+                    <div><span class="ds-ops-step">Etapa 1</span><h3>Aguardando entrega</h3></div>
+                    <span class="ds-ops-count">1 item</span>
+                </header>
+                <div class="ds-ops-item">
+                    <div class="ds-ops-item-info">
+                        <span class="ds-ops-reference">VPM-G5Z4N · Acessórios</span>
+                        <h4>Estojo preto</h4>
+                        <p>Sala de aula</p>
+                    </div>
+                    <button class="ds-button ds-button-primary ds-ops-action" type="button">Confirmar recebimento <span aria-hidden="true">→</span></button>
+                </div>
+            </article>
+
+            <article class="ds-ops-stage">
+                <header class="ds-ops-stage-heading">
+                    <div><span class="ds-ops-step">Etapa 2</span><h3>Disponíveis para retirada</h3></div>
+                    <span class="ds-ops-count">1 item</span>
+                </header>
+                <div class="ds-ops-item">
+                    <div class="ds-ops-item-info">
+                        <span class="ds-ops-reference">VPM-TG7XS · Outros</span>
+                        <h4>Garrafa térmica verde</h4>
+                        <p>Biblioteca</p>
+                    </div>
+                    <form class="ds-ops-return-form">
+                        <label><input type="checkbox"> Posse verificada presencialmente</label>
+                        <button class="ds-button ds-button-secondary ds-ops-action" type="button">Registrar devolução <span aria-hidden="true">→</span></button>
+                    </form>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <section class="ds-section" aria-labelledby="ds-upload-title">
         <div class="ds-section-heading">
             <div>
