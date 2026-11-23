@@ -22,7 +22,17 @@ public final class BuscarItens {
         Categoria categoriaFiltro = categoria == null || categoria.isBlank() ? null : Categoria.de(categoria);
         LocalCampus localFiltro = local == null || local.isBlank() ? null : LocalCampus.de(local);
         ConsultaItens consulta = new ConsultaItens(texto, categoriaFiltro, localFiltro);
-        MotorDeBusca estrategia = consulta.texto().isBlank() ? recentes : porRelevancia;
-        return estrategia.buscar(repositorio.listarAtivos(), consulta);
+        return executar(consulta);
+    }
+
+    public List<Item> executar(ConsultaItens consultaItens) {
+        MotorDeBusca estrategia = consultaItens.texto().isBlank()
+                ? recentes
+                : porRelevancia;
+
+        return estrategia.buscar(
+                repositorio.listarAtivos(),
+                consultaItens
+        );
     }
 }

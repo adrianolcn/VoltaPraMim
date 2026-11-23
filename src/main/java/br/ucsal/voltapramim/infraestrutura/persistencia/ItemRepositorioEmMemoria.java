@@ -2,7 +2,6 @@ package br.ucsal.voltapramim.infraestrutura.persistencia;
 
 import br.ucsal.voltapramim.aplicacao.porta.RepositorioDeItens;
 import br.ucsal.voltapramim.dominio.Item;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -14,7 +13,7 @@ public final class ItemRepositorioEmMemoria implements RepositorioDeItens {
     @Override public Optional<Item> buscarPorId(UUID id) { return Optional.ofNullable(itens.get(id)); }
     @Override public List<Item> listarAtivos() {
         return itens.values().stream().filter(Item::isVisivelNaBusca)
-                .sorted(Comparator.comparing(Item::getEncontradoEm).reversed()).toList();
+                .toList();
     }
     @Override public boolean existeReferencia(String referencia) {
         return itens.values().stream().anyMatch(item -> item.getReferenciaPublica().equals(referencia));
