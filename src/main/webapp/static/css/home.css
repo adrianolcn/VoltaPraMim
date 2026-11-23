@@ -312,6 +312,10 @@ h3 {
 }
 
 .category-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     min-height: 2.5rem;
     border: 2px solid var(--foreground);
     border-radius: 999px;
@@ -322,6 +326,12 @@ h3 {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.category-icon {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 1rem;
 }
 
 .category-chip:hover,
