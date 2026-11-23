@@ -14,9 +14,9 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IntegracaoInicioTest {
-    @Test void cadastroEConsultaCompartilhamItensAtivos() {
+    @Test void cadastroEConsultaCompartilhamItensAtivos(@org.junit.jupiter.api.io.TempDir java.nio.file.Path pasta) {
         var repositorio = new ItemRepositorioEmMemoria();
-        var cadastrar = new CadastrarItem(repositorio, new PublicadorEmMemoria());
+        var cadastrar = new CadastrarItem(repositorio, new PublicadorEmMemoria(), new br.ucsal.voltapramim.infraestrutura.fotos.ArmazenamentoLocalDeFotos(pasta));
         var buscar = new BuscarItens(repositorio, new BuscaPorRelevancia(), new BuscaRecentes());
         var consultar = new ConsultarItem(repositorio);
         assertTrue(buscar.executar("", null, null).isEmpty());
@@ -42,7 +42,7 @@ class IntegracaoInicioTest {
                 new ChaveRota("GET", "/buscar"), busca,
                 new ChaveRota("GET", "/achei"), novo,
                 new ChaveRota("POST", "/achei"), salvar,
-                new ChaveRota("GET", "/design-system"), design), detalhe);
+                new ChaveRota("GET", "/design-system"), design), detalhe, detalhe);
         assertSame(inicio, roteador.resolver("GET", "/").orElseThrow());
         assertSame(inicio, roteador.resolver("GET", "/home").orElseThrow());
         assertSame(busca, roteador.resolver("GET", "/buscar").orElseThrow());

@@ -27,13 +27,11 @@ public final class SalvarItemComando implements ComandoWeb {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        String titulo = request.getParameter("titulo");
-        String descricao = request.getParameter("descricao");
-
-        request.setAttribute("titulo", titulo == null ? "" : titulo);
-        request.setAttribute("descricao", descricao == null ? "" : descricao);
-
         try {
+            String titulo = request.getParameter("titulo");
+            String descricao = request.getParameter("descricao");
+            request.setAttribute("titulo", titulo == null ? "" : titulo);
+            request.setAttribute("descricao", descricao == null ? "" : descricao);
             Categoria categoria =
                     Categoria.de(request.getParameter("categoria"));
 
@@ -53,6 +51,8 @@ public final class SalvarItemComando implements ComandoWeb {
             response.sendRedirect(
                     request.getContextPath() + "/itens/" + item.getId()
             );
+        } catch (IllegalStateException erro) {
+            CadastroComando.mostrarErro(request, response, "A foto deve ter no máximo 5 MiB.");
         } catch (IllegalArgumentException erro) {
             CadastroComando.mostrarErro(
                     request,

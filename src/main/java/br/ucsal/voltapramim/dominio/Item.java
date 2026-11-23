@@ -16,7 +16,7 @@ public final class Item {
     private final Categoria categoria;
     private final LocalCampus local;
     private final Instant encontradoEm = Instant.now();
-    private final String fotoId;
+    private String fotoId;
 
     private EstadoItem estado = new AguardandoEntrega();
 
@@ -62,6 +62,11 @@ public final class Item {
         }
 
         this.fotoId = fotoId;
+    }
+
+    public void associarFoto(String fotoId) {
+        if (!categoria.aceitaFoto()) throw new IllegalArgumentException("Documentos não podem ter foto.");
+        this.fotoId = Objects.requireNonNull(fotoId);
     }
 
     public void confirmarRecebimento() {

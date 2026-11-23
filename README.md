@@ -1,6 +1,3 @@
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
-Failed to create stream fd: Operation not permitted
 # VoltaPraMim
 
 Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 17, Maven, Servlet/JSP e CSS/JavaScript puros. A aplicação carrega itens fictícios de demonstração em memória.
@@ -39,6 +36,7 @@ Para escolher a pasta local de fotos no PowerShell:
 ```powershell
 $env:VPM_FOTOS_DIR = "$env:USERPROFILE\voltapramim-fotos"
 mvn jetty:run
+```
 
 Abra <http://localhost:8080>. O servidor continua rodando no terminal; use `Ctrl+C` para pará-lo. Os dados de demonstração são recriados a cada inicialização.
 

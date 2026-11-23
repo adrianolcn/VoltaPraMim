@@ -52,8 +52,6 @@ public final class CadastrarItem {
             );
         }
 
-        String fotoId = foto == null ? null : fotos.salvar(foto);
-
         String referencia;
         do {
             referencia = gerarReferencia();
@@ -64,11 +62,20 @@ public final class CadastrarItem {
                 titulo,
                 descricao,
                 categoria,
-                local,
-                fotoId
+                local
         );
 
-        repositorio.salvar(item);
+        String fotoId = foto == null ? null : fotos.salvar(foto);
+        if (fotoId != null) item.associarFoto(fotoId);
+        try {
+            repositorio.salvar(item);
+        } catch (RuntimeException erro) {
+            if (fotoId != null) {
+                try { fotos.remover(fotoId); }
+                catch (RuntimeException limpeza) { erro.addSuppressed(limpeza); }
+            }
+            throw erro;
+        }
 
         eventos.publicar(
                 new ItemCadastrado(item.getId(), Instant.now())

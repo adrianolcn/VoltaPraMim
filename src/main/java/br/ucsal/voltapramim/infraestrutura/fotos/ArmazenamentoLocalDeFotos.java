@@ -5,7 +5,8 @@ import br.ucsal.voltapramim.aplicacao.porta.FotoArmazenada;
 import br.ucsal.voltapramim.aplicacao.porta.FotoUpload;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -62,6 +63,13 @@ public final class ArmazenamentoLocalDeFotos
     }
 
     @Override
+    public void remover(String fotoId) {
+        if (fotoId == null || !fotoId.matches("[0-9a-fA-F-]{36}")) throw new IllegalArgumentException("Identificador inválido.");
+        try { Files.deleteIfExists(diretorio.resolve(fotoId + ".img")); }
+        catch (IOException erro) { throw new IllegalStateException("Não foi possível remover a foto.", erro); }
+    }
+
+    @Override
     public Optional<FotoArmazenada> buscarPorId(String fotoId) {
         if (fotoId == null || !fotoId.matches("[0-9a-fA-F-]{36}")) {
             return Optional.empty();
@@ -100,32 +108,23 @@ public final class ArmazenamentoLocalDeFotos
     }
 
     private String detectarTipo(byte[] conteudo) {
-        try (ByteArrayInputStream entrada =
-                     new ByteArrayInputStream(conteudo)) {
-
-            BufferedImage imagem = ImageIO.read(entrada);
-
-            if (imagem == null) {
-                throw new IllegalArgumentException(
-                        "O arquivo enviado não é uma imagem válida."
-                );
-            }
-
-            if (ehPng(conteudo)) {
-                return "image/png";
-            }
-
-            if (ehJpeg(conteudo)) {
-                return "image/jpeg";
-            }
-
-            throw new IllegalArgumentException(
-                    "Envie somente imagens JPEG ou PNG."
-            );
+        String tipo = ehPng(conteudo) ? "image/png" : ehJpeg(conteudo) ? "image/jpeg" : null;
+        if (tipo == null) throw new IllegalArgumentException("Envie somente imagens JPEG ou PNG.");
+        try (ImageInputStream entrada = ImageIO.createImageInputStream(new ByteArrayInputStream(conteudo))) {
+            var leitores = ImageIO.getImageReaders(entrada);
+            if (!leitores.hasNext()) throw new IllegalArgumentException("O arquivo enviado não é uma imagem válida.");
+            ImageReader leitor = leitores.next();
+            try {
+                leitor.setInput(entrada, true, true);
+                int largura = leitor.getWidth(0);
+                int altura = leitor.getHeight(0);
+                if (largura <= 0 || altura <= 0 || (long) largura * altura > 25_000_000L)
+                    throw new IllegalArgumentException("A imagem excede o limite de dimensões.");
+                if (leitor.read(0) == null) throw new IllegalArgumentException("O arquivo enviado não é uma imagem válida.");
+                return tipo;
+            } finally { leitor.dispose(); }
         } catch (IOException erro) {
-            throw new IllegalArgumentException(
-                    "Não foi possível validar a imagem enviada."
-            );
+            throw new IllegalArgumentException("Não foi possível validar a imagem enviada.");
         }
     }
 

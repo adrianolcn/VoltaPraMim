@@ -130,6 +130,19 @@ class CadastrarItemTest {
         assertTrue(eventos.publicados.isEmpty());
     }
 
+    @Test
+    void tituloInvalidoNaoGravaFotoNemPublicaEvento() {
+        var repositorio = new ItemRepositorioEmMemoria();
+        var eventos = new PublicadorDeEventosFake(repositorio);
+        var fotos = new ArmazenamentoDeFotosFake();
+        var cadastro = new CadastrarItem(repositorio, eventos, fotos);
+        var foto = new FotoUpload(new byte[]{1}, "image/png");
+        assertThrows(IllegalArgumentException.class, () -> cadastro.executar(" ", "", Categoria.OUTROS, LocalCampus.CANTINA, foto));
+        assertEquals(null, fotos.ultimaFotoSalva);
+        assertTrue(repositorio.listarAtivos().isEmpty());
+        assertTrue(eventos.publicados.isEmpty());
+    }
+
     private static final class PublicadorDeEventosFake
             implements PublicadorDeEventos {
 
@@ -172,6 +185,9 @@ class CadastrarItemTest {
             ultimaFotoSalva = foto;
             return "foto-teste";
         }
+
+        @Override
+        public void remover(String id) { ultimaFotoSalva = null; }
 
         @Override
         public Optional<FotoArmazenada> buscarPorId(String fotoId) {
