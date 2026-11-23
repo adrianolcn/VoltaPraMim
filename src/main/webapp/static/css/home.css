@@ -388,6 +388,7 @@ h3 {
     color: var(--signal-foreground);
 }
 
+.status-available,
 .status-returned {
     background: var(--secondary);
     color: var(--secondary-foreground);

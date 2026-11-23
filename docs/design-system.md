@@ -33,7 +33,7 @@ dispositivos móveis. O texto do erro é apresentado com `role="alert"` e não
 depende somente da cor para comunicar o problema.
 
 A validação definitiva de JPEG, PNG, tamanho máximo de 5 MiB e bloqueio de
-foto para Documentos ocorre no servidor, durante o cadastro.
+foto para Documentos depende da integração do upload no servidor.
 
 ### Badges de status
 

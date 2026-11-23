@@ -1,0 +1,20 @@
+<%@ page pageEncoding="UTF-8" %>
+        <c:choose>
+            <c:when test="${item.estadoRotulo eq 'Disponível para retirada'}">
+                <span class="badge badge-available">
+                    <c:out value="${item.estadoRotulo}" />
+                </span>
+            </c:when>
+
+            <c:when test="${item.estadoRotulo eq 'Devolvido'}">
+                <span class="badge badge-returned">
+                    <c:out value="${item.estadoRotulo}" />
+                </span>
+            </c:when>
+
+            <c:otherwise>
+                <span class="badge badge-pending">
+                    <c:out value="${item.estadoRotulo}" />
+                </span>
+            </c:otherwise>
+        </c:choose>

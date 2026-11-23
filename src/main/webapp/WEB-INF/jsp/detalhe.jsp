@@ -4,25 +4,7 @@
 <p><a class="text-link" href="${buscarUrl}">← Voltar à busca</a></p>
 <article class="detail-panel">
     <div class="item-card-top">
-        <c:choose>
-            <c:when test="${item.estadoRotulo eq 'Disponível para retirada'}">
-                <span class="badge badge-available">
-                    <c:out value="${item.estadoRotulo}" />
-                </span>
-            </c:when>
-
-            <c:when test="${item.estadoRotulo eq 'Devolvido'}">
-                <span class="badge badge-returned">
-                    <c:out value="${item.estadoRotulo}" />
-                </span>
-            </c:when>
-
-            <c:otherwise>
-                <span class="badge badge-pending">
-                    <c:out value="${item.estadoRotulo}" />
-                </span>
-            </c:otherwise>
-        </c:choose>
+        <%@ include file="status-item.jspf" %>
         <span class="item-category"><c:out value="${item.categoria.rotulo}" /></span>
     </div>
     <h1><c:out value="${item.titulo}" /></h1>
