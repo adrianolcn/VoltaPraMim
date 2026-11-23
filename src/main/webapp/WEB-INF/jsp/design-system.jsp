@@ -95,61 +95,63 @@
                 <p class="eyebrow">Operações</p>
                 <h2 id="ds-operations-title">Painel de atendimento</h2>
             </div>
-            <p>Resumo por etapa, filas de trabalho e ações que deixam claro o próximo passo do atendimento.</p>
+            <p>Resumo por etapa, filas de trabalho e ações do painel de atendimento.</p>
         </div>
 
         <div class="ds-ops-summary" aria-label="Resumo das etapas">
             <article class="ds-ops-summary-card ds-ops-summary-waiting">
-                <span class="ds-ops-summary-icon" aria-hidden="true">◷</span>
-                <div><span class="ds-ops-summary-label">Aguardando entrega</span><strong>03</strong></div>
-                <p>Aguardam confirmação presencial</p>
+                <span class="ds-ops-summary-label">Aguardando entrega</span>
+                <strong>3</strong>
+                <span class="ds-ops-summary-note">Aguardam confirmação presencial</span>
             </article>
             <article class="ds-ops-summary-card ds-ops-summary-available">
-                <span class="ds-ops-summary-icon" aria-hidden="true">✓</span>
-                <div><span class="ds-ops-summary-label">Disponíveis para retirada</span><strong>02</strong></div>
-                <p>Aguardam identificação do proprietário</p>
+                <span class="ds-ops-summary-label">Disponíveis para retirada</span>
+                <strong>0</strong>
+                <span class="ds-ops-summary-note">Aguardam identificação do proprietário</span>
             </article>
             <article class="ds-ops-summary-card ds-ops-summary-returned">
-                <span class="ds-ops-summary-icon" aria-hidden="true">↗</span>
-                <div><span class="ds-ops-summary-label">Devolvidos</span><strong>08</strong></div>
-                <p>Concluídos nesta sessão</p>
+                <span class="ds-ops-summary-label">Devolvidos</span>
+                <strong>0</strong>
+                <span class="ds-ops-summary-note">Histórico desta sessão</span>
             </article>
         </div>
 
-        <div class="ds-ops-workflow-grid">
-            <article class="ds-ops-stage">
-                <header class="ds-ops-stage-heading">
-                    <div><span class="ds-ops-step">Etapa 1</span><h3>Aguardando entrega</h3></div>
-                    <span class="ds-ops-count">1 item</span>
-                </header>
-                <div class="ds-ops-item">
-                    <div class="ds-ops-item-info">
-                        <span class="ds-ops-reference">VPM-G5Z4N · Acessórios</span>
-                        <h4>Estojo preto</h4>
-                        <p>Sala de aula</p>
-                    </div>
+        <section class="ds-ops-section" aria-labelledby="ds-ops-waiting-title">
+            <div class="ds-ops-section-heading">
+                <div><p class="eyebrow">Etapa 1</p><h3 id="ds-ops-waiting-title">Aguardando entrega</h3></div>
+                <span class="ds-ops-count">3 itens</span>
+            </div>
+            <div class="ds-ops-list">
+                <article class="ds-ops-item">
+                    <div class="ds-ops-item-info"><span class="ds-ops-reference">VPM-LPMAF</span><h4>Estojo preto</h4><p>Acessórios <span aria-hidden="true">·</span> Sala de aula</p></div>
                     <button class="ds-button ds-button-primary ds-ops-action" type="button">Confirmar recebimento <span aria-hidden="true">→</span></button>
-                </div>
-            </article>
+                </article>
+                <article class="ds-ops-item">
+                    <div class="ds-ops-item-info"><span class="ds-ops-reference">VPM-5DHLJ</span><h4>Garrafa térmica verde</h4><p>Outros <span aria-hidden="true">·</span> Biblioteca</p></div>
+                    <button class="ds-button ds-button-primary ds-ops-action" type="button">Confirmar recebimento <span aria-hidden="true">→</span></button>
+                </article>
+                <article class="ds-ops-item">
+                    <div class="ds-ops-item-info"><span class="ds-ops-reference">VPM-58MLQ</span><h4>Chaveiro azul com duas chaves</h4><p>Chaves <span aria-hidden="true">·</span> Cantina</p></div>
+                    <button class="ds-button ds-button-primary ds-ops-action" type="button">Confirmar recebimento <span aria-hidden="true">→</span></button>
+                </article>
+            </div>
+        </section>
 
-            <article class="ds-ops-stage">
-                <header class="ds-ops-stage-heading">
-                    <div><span class="ds-ops-step">Etapa 2</span><h3>Disponíveis para retirada</h3></div>
-                    <span class="ds-ops-count">1 item</span>
-                </header>
-                <div class="ds-ops-item">
-                    <div class="ds-ops-item-info">
-                        <span class="ds-ops-reference">VPM-TG7XS · Outros</span>
-                        <h4>Garrafa térmica verde</h4>
-                        <p>Biblioteca</p>
-                    </div>
-                    <form class="ds-ops-return-form">
-                        <label><input type="checkbox"> Posse verificada presencialmente</label>
-                        <button class="ds-button ds-button-secondary ds-ops-action" type="button">Registrar devolução <span aria-hidden="true">→</span></button>
-                    </form>
-                </div>
-            </article>
-        </div>
+        <section class="ds-ops-section" aria-labelledby="ds-ops-available-title">
+            <div class="ds-ops-section-heading">
+                <div><p class="eyebrow">Etapa 2</p><h3 id="ds-ops-available-title">Disponíveis para retirada</h3></div>
+                <span class="ds-ops-count">0 itens</span>
+            </div>
+            <div class="ds-ops-list"><p class="ds-ops-empty">Nenhum objeto disponível para retirada no momento.</p></div>
+        </section>
+
+        <section class="ds-ops-section" aria-labelledby="ds-ops-history-title">
+            <div class="ds-ops-section-heading">
+                <div><p class="eyebrow">Concluído</p><h3 id="ds-ops-history-title">Histórico de devoluções</h3></div>
+                <span class="ds-ops-count">0 itens</span>
+            </div>
+            <div class="ds-ops-list"><p class="ds-ops-empty">Nenhuma devolução concluída nesta sessão.</p></div>
+        </section>
     </section>
 
     <section class="ds-section" aria-labelledby="ds-upload-title">
