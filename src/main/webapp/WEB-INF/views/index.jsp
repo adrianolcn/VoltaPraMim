@@ -79,7 +79,7 @@
                              data-place="<c:out value='${item.local.rotulo}'/>"
                              data-category="<c:out value='${item.categoria.name()}'/>">
                         <div class="item-meta">
-                            <span class="status-badge status-waiting"><span class="status-dot" aria-hidden="true"></span><c:out value="${item.estadoRotulo}"/></span>
+                            <span class="status-badge ${item.estadoRotulo eq 'Disponível para retirada' ? 'status-available' : 'status-waiting'}"><span class="status-dot" aria-hidden="true"></span><c:out value="${item.estadoRotulo}"/></span>
                         </div>
                         <h3 class="item-title"><c:out value="${item.titulo}"/></h3>
                         <p class="item-location"><span aria-hidden="true">📍</span> <c:out value="${item.local.rotulo}"/> · <c:out value="${item.categoria.rotulo}"/></p>

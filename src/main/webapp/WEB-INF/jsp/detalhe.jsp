@@ -4,7 +4,7 @@
 <p><a class="text-link" href="${buscarUrl}">← Voltar à busca</a></p>
 <article class="detail-panel">
     <div class="item-card-top">
-        <span class="badge badge-pending"><c:out value="${item.estadoRotulo}" /></span>
+        <%@ include file="status-item.jspf" %>
         <span class="item-category"><c:out value="${item.categoria.rotulo}" /></span>
     </div>
     <h1><c:out value="${item.titulo}" /></h1>
