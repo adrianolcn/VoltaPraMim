@@ -20,13 +20,12 @@ public final class CsrfOperacoesFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) res;
 
         String caminho = request.getRequestURI().substring(request.getContextPath().length());
-        if ("/operacoes/login".equals(caminho)) {
-            chain.doFilter(request, response);
-            return;
-        }
-
         HttpSession sessao = request.getSession(false);
-        if (sessao != null && SessaoOperacoes.estaAutenticado(sessao)) {
+        boolean rotaLogin = "/operacoes/login".equals(caminho);
+        if (rotaLogin && "GET".equalsIgnoreCase(request.getMethod())) {
+            sessao = request.getSession(true);
+        }
+        if (sessao != null && (rotaLogin || SessaoOperacoes.estaAutenticado(sessao))) {
             String tokenSessao = SessaoOperacoes.garantirTokenCsrf(sessao);
             request.setAttribute("csrfToken", tokenSessao);
         }

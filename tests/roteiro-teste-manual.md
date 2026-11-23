@@ -1,6 +1,6 @@
 # Roteiro de teste manual
 
-Os itens abaixo descrevem verificações planejadas. Registre resultados somente depois de executá-las; ainda não há resultados anotados.
+Os itens abaixo descrevem verificações planejadas. Registre resultados somente depois de executá-las; ainda não há resultados observados nesta revisão.
 
 1. Iniciar a aplicação com `mvn jetty:run` (com `VPM_OPERACOES_SENHA` configurada no ambiente) e abrir `http://localhost:8080`.
 2. Confirmar a página inicial e os três itens fictícios.
@@ -41,7 +41,3 @@ Os itens abaixo descrevem verificações planejadas. Registre resultados somente
 ## Fora desta versão
 
 Integração institucional com a Sala de Operações da UCSal, persistência em banco H2 e busca com sinônimos (Decorator) permanecem fora do núcleo obrigatório desta entrega.
-
-| Data | Verificação | Resultado real | Evidência / observações |
-| --- | --- | --- | --- |
-| 23/11/2026 | Fluxo completo do painel `/operacoes` em `mvn jetty:run` | Aprovado em ambiente local | Bloqueio sem sessão, login via `VPM_OPERACOES_SENHA`, recebimento, verificação presencial de posse, devolução (remoção da busca pública) e logout validados. |

@@ -26,6 +26,7 @@ public final class TelaLoginOperacoesComando implements ComandoWeb {
         }
         request.setAttribute("tituloPagina", "Acesso restrito · Operações");
         request.setAttribute("senhaConfigurada", autenticador.senhaConfigurada());
+        request.setAttribute("csrfToken", SessaoOperacoes.garantirTokenCsrf(request.getSession(true)));
         Views.render(request, response, "login-operacoes");
     }
 }

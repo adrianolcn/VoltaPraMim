@@ -1,6 +1,6 @@
 # Plano de validação
 
-As hipóteses de produto abaixo dependem de testes externos com usuários e conversa institucional, permanecendo registradas sem resultados fabricados[cite: 45]. A seção seguinte documenta a verificação técnica e funcional executada pela equipe no protótipo.
+As hipóteses de produto abaixo dependem de testes externos com usuários e conversa institucional. Não há resultados de pesquisa de produto registrados. A seção seguinte deve conter apenas verificações técnicas realmente executadas e evidências reproduzíveis.
 
 | Hipótese | Método | Evidência a registrar | Estado |
 | --- | --- | --- | --- |
@@ -8,9 +8,10 @@ As hipóteses de produto abaixo dependem de testes externos com usuários e conv
 | Quem perdeu consultaria o site sem login. | Formulário anônimo e teste guiado. | Tarefas concluídas, dúvidas e observações. | Não iniciado |
 | Sala de Operações pode centralizar a retirada. | Conversa com responsável e aceite operacional. | Data, papel do interlocutor e decisão; se não confirmado, manter simulação. | Simulado (sem aceite formal) |
 
-## Verificação técnica e funcional executada
+## Verificação técnica e funcional
 
 | Data | Verificação | Resultado real | Evidência / observações |
 | --- | --- | --- | --- |
-| 23/11/2026 | Suíte automatizada JUnit (`mvn test`) | Aprovado (`Tests run: 57, Failures: 0, Errors: 0, Skipped: 0`) | Cobre domínio/State, eventos/Observer, busca/Strategy, upload de fotos, roteamento/Command, sessão e CSRF. |
-| 23/11/2026 | Fluxo completo no navegador (`mvn jetty:run`) | Aprovado em ambiente local | Validados bloqueio sem sessão (`/operacoes` -> `/operacoes/login`), login via `VPM_OPERACOES_SENHA`, recebimento, verificação presencial de posse, devolução (saída da busca pública) e logout em simulação acadêmica. |
+| 23/11/2026 | Suíte automatizada JUnit (`mvn test`) | Aprovado (57 testes; 0 falhas, 0 erros, 0 ignorados) | Executado nesta revisão no worktree `pr18-review`. |
+| 23/11/2026 | Empacotamento (`mvn package`) | Aprovado | WAR gerado em `target/voltapramim.war` nesta revisão. |
+| — | Fluxo completo no navegador (`mvn jetty:run`) | Pendente | O roteiro manual descreve os passos; navegador/Jetty não foram verificados nesta revisão. |

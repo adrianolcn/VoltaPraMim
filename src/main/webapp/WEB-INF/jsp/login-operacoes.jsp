@@ -18,6 +18,7 @@
     </c:if>
 
     <form method="post" action="${loginAction}">
+        <input type="hidden" name="csrfToken" value="<c:out value='${csrfToken}' />">
         <div style="margin-bottom: 1rem;">
             <label for="senha" style="display: block; font-weight: 600; margin-bottom: 0.4rem;">
                 Senha de demonstração
