@@ -83,5 +83,6 @@
     <p class="page-footer">Um cuidado seu pode fazer o dia de alguém.</p>
 </main>
 <script src="${pageContext.request.contextPath}/static/js/cadastro.js" defer></script>
+<script src="${pageContext.request.contextPath}/static/js/select-custom.js" defer></script>
 </body>
 </html>
