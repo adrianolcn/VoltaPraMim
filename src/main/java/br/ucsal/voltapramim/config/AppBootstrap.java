@@ -8,6 +8,7 @@ import br.ucsal.voltapramim.aplicacao.ListarOperacoes;
 import br.ucsal.voltapramim.aplicacao.RegistrarDevolucao;
 import br.ucsal.voltapramim.aplicacao.porta.ArmazenamentoDeFotos;
 import br.ucsal.voltapramim.aplicacao.porta.RepositorioDeItens;
+import br.ucsal.voltapramim.infraestrutura.busca.BuscaComSinonimos;
 import br.ucsal.voltapramim.infraestrutura.busca.BuscaPorRelevancia;
 import br.ucsal.voltapramim.infraestrutura.busca.BuscaRecentes;
 import br.ucsal.voltapramim.infraestrutura.demo.DadosDemonstracao;
@@ -60,7 +61,7 @@ public final class AppBootstrap implements ServletContextListener {
 
         BuscarItens buscar = new BuscarItens(
                 repositorio,
-                new BuscaPorRelevancia(),
+                new BuscaComSinonimos(new BuscaPorRelevancia()),
                 new BuscaRecentes()
         );
 

@@ -1,10 +1,10 @@
 # VoltaPraMim
 
-Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 17, Maven, Servlet/JSP e CSS/JavaScript puros. A aplicação carrega itens fictícios de demonstração em memória.
+Página inicial do mural acadêmico de achados e perdidos da UCSal. A aplicação usa Java 21, Maven, Servlet/JSP e CSS/JavaScript puros. A aplicação carrega itens fictícios de demonstração em memória.
 
 ## Requisitos
 
-- JDK 17
+- JDK 21
 - Maven 3.9+
 
 ## Executar localmente
@@ -49,7 +49,7 @@ UUID e são acessados somente pela rota controlada `/fotos/{id}`.
 - A busca instantânea em `static/js/home.js` filtra os itens ativos renderizados; enviar o formulário abre a busca completa em `/buscar`.
 - Os dados ficam em memória e são apagados ao reiniciar. Não há banco de dados nem framework front-end.
 
-A especificação revisada menciona Java 21; este repositório usa Java 17. A versão definitiva deve ser confirmada pela equipe.
+O Maven compila com `--release 21`. Execute os comandos acima com JDK 21 ativo; versões anteriores não conseguem compilar o projeto na configuração padrão.
 
 ## Funcionalidades existentes
 
@@ -59,6 +59,7 @@ A especificação revisada menciona Java 21; este repositório usa Java 17. A ve
 - Página de detalhes com referência pública, status e instrução de retirada condicional ao estado `Disponível para retirada`.
 - Ciclo de vida modelado com State (`Aguardando entrega` → `Disponível para retirada` → `Devolvido`) com atualização atômica por item.
 - Busca por relevância e por itens recentes usando Strategy.
+- Busca por sinônimos usando Decorator (`celular` ↔ `smartphone`) sobre a estratégia de relevância.
 - Eventos de domínio (`ItemCadastrado`, `ItemRecebido`, `ItemDevolvido`) com observers para auditoria e contagem discriminada por tipo.
 - Despacho HTTP por comandos.
 - Upload opcional de imagens JPEG e PNG para itens permitidos, bloqueio de foto para Documentos e armazenamento local privado com UUID.
@@ -68,6 +69,6 @@ A especificação revisada menciona Java 21; este repositório usa Java 17. A ve
 
 O armazenamento é em memória e os itens são apagados ao reiniciar. As fotos podem permanecer no diretório local configurado por `VPM_FOTOS_DIR`; a limpeza desse diretório ainda não é automatizada. O painel `/operacoes` funciona como **simulação acadêmica**: utiliza credencial única de demonstração via ambiente, sem contas individuais, sem integração institucional com sistemas da UCSal e sem aceite formal da Sala de Operações.
 
-Os testes automatizados (`mvn test` — 58 testes aprovados na revisão de 23/11/2026) cobrem regras de estado, eventos e observadores, busca e filtros, upload de fotos, roteamento, autenticação e proteção CSRF. O roteiro manual registra verificações complementares de produto e operação.
+Os testes automatizados (`mvn clean verify` — 58 testes aprovados com OpenJDK 21.0.13.1 em 23/11/2026) cobrem regras de estado, eventos e observadores, busca e filtros, upload de fotos, roteamento, autenticação e proteção CSRF; o comando também empacota o WAR. O Jetty foi iniciado nessa versão e as páginas públicas e o login responderam HTTP 200. O roteiro manual registra verificações visuais e de operação que continuam pendentes.
 
-O PDF de especificação está em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf). Consulte também a [arquitetura](docs/arquitetura.md), as [decisões pendentes](docs/decisoes.md), o [plano de validação](docs/validacao.md) e o [roteiro de teste manual](tests/roteiro-teste-manual.md).
+O PDF de especificação está em [`docs/especificacao/VoltaPraMim_Project.pdf`](docs/especificacao/VoltaPraMim_Project.pdf). Consulte também a [arquitetura](docs/arquitetura.md), as [decisões e limites do MVP](docs/decisoes.md), o [plano de validação](docs/validacao.md) e o [roteiro de teste manual](tests/roteiro-teste-manual.md).
