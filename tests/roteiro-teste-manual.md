@@ -1,6 +1,6 @@
 # Roteiro de teste manual
 
-Os itens abaixo descrevem verificações planejadas. Registre resultados somente depois de executá-las; ainda não há resultados observados nesta revisão.
+Os itens abaixo são verificações visuais e funcionais para execução manual. O smoke test HTTP das rotas públicas já está registrado em `docs/validacao.md`; ele não substitui a conferência visual nem o fluxo manual completo. Registre resultados de cada passo após executá-lo.
 
 1. Iniciar a aplicação com `mvn jetty:run` (com `VPM_OPERACOES_SENHA` configurada no ambiente) e abrir `http://localhost:8080`.
 2. Confirmar a página inicial e os três itens fictícios.
@@ -10,6 +10,7 @@ Os itens abaixo descrevem verificações planejadas. Registre resultados somente
 6. Tentar enviar campos obrigatórios vazios e título acima de 80 caracteres.
 7. Verificar que itens aguardando não prometem retirada.
 8. Conferir foco por teclado, labels, navegação no celular e contraste.
+9. Pesquisar por `celular` e confirmar que itens descritos como `smartphone` também aparecem; repetir a busca por `smartphone` e conferir que itens descritos como `celular` aparecem. Os testes automatizados cobrem o Decorator; registre aqui o resultado observado no navegador.
 
 
 ## Upload de fotos
@@ -40,4 +41,4 @@ Os itens abaixo descrevem verificações planejadas. Registre resultados somente
 
 ## Fora desta versão
 
-Integração institucional com a Sala de Operações da UCSal, persistência em banco H2 e busca com sinônimos (Decorator) permanecem fora do núcleo obrigatório desta entrega.
+Integração institucional com a Sala de Operações da UCSal e persistência em banco H2 permanecem fora desta versão. O Decorator de sinônimos está implementado e integrado à busca por relevância; a validação manual no navegador ainda precisa ser registrada.

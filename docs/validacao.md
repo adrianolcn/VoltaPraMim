@@ -12,6 +12,5 @@ As hipóteses de produto abaixo dependem de testes externos com usuários e conv
 
 | Data | Verificação | Resultado real | Evidência / observações |
 | --- | --- | --- | --- |
-| 23/11/2026 | Suíte automatizada JUnit (`mvn test`) | Aprovado (58 testes; 0 falhas, 0 erros, 0 ignorados) | Executado nesta revisão no worktree `pr18-review`. |
-| 23/11/2026 | Empacotamento (`mvn package`) | Aprovado | WAR gerado em `target/voltapramim.war` nesta revisão. |
-| — | Fluxo completo no navegador (`mvn jetty:run`) | Pendente | O roteiro manual descreve os passos; navegador/Jetty não foram verificados nesta revisão. |
+| 23/11/2026 | Java 21 (`mvn clean verify`) | Aprovado (58 testes; 0 falhas, 0 erros, 0 ignorados; WAR empacotado) | Executado com OpenJDK 21.0.13.1; compilação principal e testes usaram `--release 21`. |
+| 23/11/2026 | Smoke test HTTP do Jetty (`mvn jetty:run`) | Aprovado: `/`, `/buscar`, `/achei`, `/design-system` e `/operacoes/login` responderam HTTP 200 | Jetty 12 iniciou usando JVM 21.0.13.1. Após restringir a varredura dos JARs JSTL no Jetty, os avisos de classes em múltiplas localizações desapareceram. Permanecem apenas avisos não fatais sobre schemas XML externos; o roteiro manual completo ainda não foi executado. |

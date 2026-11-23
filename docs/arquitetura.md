@@ -4,7 +4,9 @@
 
 O fluxo público inclui cadastro em memória, página inicial, busca por relevância ou recentes, consulta de detalhes e fotos opcionais. `AppBootstrap` cria um repositório compartilhado e carrega os dados fictícios uma única vez. `FrontControllerServlet` e `Roteador` despacham rotas públicas e administrativas para seus comandos. O cadastro, a busca, os detalhes e o painel usam o mesmo repositório. O painel implementa autenticação demonstrativa, CSRF, recebimento e devolução com atualização atômica por item.
 
-O projeto usa Java 17; a especificação revisada menciona Java 21. A versão definitiva permanece uma decisão a confirmar.
+O projeto está configurado para Java 21, conforme a especificação. `mvn clean verify` e um smoke test HTTP do Jetty foram executados com OpenJDK 21.0.13.1; os resultados estão em `docs/validacao.md`.
+
+O plugin Jetty limita a varredura dos JARs da aplicação para não escanear novamente JSTL já disponibilizado pelo contêiner. Os JARs JSTL continuam no WAR para implantação em contêineres externos.
 
 ## Direção das dependências
 
@@ -35,9 +37,13 @@ web → aplicação → domínio
 | Observer | `dominio/evento`, `infraestrutura/eventos` | Publica eventos após persistir; auditoria e estatísticas reagem independentemente. |
 | Strategy | `aplicacao/porta`, `infraestrutura/busca` | Busca por relevância para texto e itens recentes sem termo. |
 | Command | `web/comandos` | O Front Controller despacha cada ação HTTP para um comando. |
-| Decorator (opcional) | Pendente | Expansão de sinônimos poderá ser considerada futuramente. |
+| Decorator | `infraestrutura/busca/BuscaComSinonimos` | Envolve `MotorDeBusca`, consulta termos equivalentes (celular ↔ smartphone) e combina resultados sem duplicar itens. |
 
 Repository, Front Controller e Composition Root são escolhas arquiteturais; não serão apresentados como padrões GoF.
+
+`AppBootstrap` envolve `BuscaPorRelevancia` com `BuscaComSinonimos`. A busca original continua responsável pela
+normalização, relevância e filtros; o Decorator apenas executa consultas equivalentes e reúne os resultados.
+`BuscaRecentes` permanece sem decoração, pois não recebe texto de busca.
 
 ## Fluxo principal
 
