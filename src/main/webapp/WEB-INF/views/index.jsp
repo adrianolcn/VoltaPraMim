@@ -120,7 +120,10 @@
 <footer class="site-footer">
     <div class="footer-inner">
         <p>Protótipo acadêmico · UCSal</p>
-        <a href="${pageContext.request.contextPath}/design-system">Design System</a>
+        <nav class="footer-links" aria-label="Links do rodapé">
+            <a href="${pageContext.request.contextPath}/operacoes">Operações</a>
+            <a href="${pageContext.request.contextPath}/design-system">Design System</a>
+        </nav>
     </div>
 </footer>
 <script src="${pageContext.request.contextPath}/static/js/home.js" defer></script>

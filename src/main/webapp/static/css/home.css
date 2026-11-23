@@ -531,6 +531,12 @@ h3 {
     font-weight: 600;
 }
 
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .footer-inner a:hover,
 .footer-inner a:focus-visible {
     color: var(--signal);
