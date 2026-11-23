@@ -152,13 +152,13 @@
     background: currentColor;
 }
 
-.status-waiting {
+.design-system-page .status-waiting {
     background: var(--signal);
     color: var(--signal-foreground);
 }
 
-.status-available,
-.status-returned {
+.design-system-page .status-available,
+.design-system-page .status-returned {
     background: var(--secondary);
     color: var(--secondary-foreground);
 }
