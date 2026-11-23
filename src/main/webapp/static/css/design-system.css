@@ -1,0 +1,374 @@
+.design-system-page {
+    padding-bottom: 1rem;
+}
+
+.design-system-page .page-intro {
+    margin-bottom: 3rem;
+}
+
+.design-system-page .page-intro h1 {
+    color: var(--foreground);
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    letter-spacing: -0.055em;
+}
+
+.design-system-page .page-intro > p:last-child {
+    margin-bottom: 0;
+    color: var(--muted-foreground);
+    font-size: 1.125rem;
+}
+
+.ds-section {
+    margin-block: 3rem;
+}
+
+.ds-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.ds-section-heading .eyebrow {
+    margin-bottom: 0.35rem;
+}
+
+.ds-section-heading h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    letter-spacing: -0.04em;
+}
+
+.ds-section-heading > p {
+    max-width: 34rem;
+    margin: 0 0 0.2rem;
+    color: var(--muted-foreground);
+}
+
+.ds-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.ds-grid-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ds-grid-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ds-panel,
+.ds-item-card {
+    min-width: 0;
+    border: 2px solid var(--foreground);
+    border-radius: 1rem;
+    background: var(--card);
+    box-shadow: var(--shadow-tag);
+}
+
+.ds-panel {
+    padding: 1.25rem;
+}
+
+.ds-panel h3 {
+    margin: 0 0 1.25rem;
+    font-size: 1.2rem;
+    letter-spacing: -0.025em;
+}
+
+.ds-button-stack,
+.ds-status-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.ds-button {
+    min-height: 3.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border: 2px solid var(--foreground);
+    border-radius: 1rem;
+    padding: 0.75rem 1.1rem;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ds-button-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.ds-button-primary:hover {
+    background: var(--foreground);
+}
+
+.ds-button-secondary {
+    background: var(--card);
+    color: var(--foreground);
+}
+
+.ds-button-secondary:hover {
+    background: var(--muted);
+}
+
+.ds-filter-chip {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--foreground);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    background: var(--foreground);
+    color: var(--background);
+    font: inherit;
+    font-weight: 700;
+}
+
+.design-system-page .status-badge {
+    min-height: 1.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.design-system-page .status-dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    flex: 0 0 0.4rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.status-waiting {
+    background: var(--signal);
+    color: var(--signal-foreground);
+}
+
+.status-available,
+.status-returned {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+.ds-field {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.ds-field:last-child {
+    margin-bottom: 0;
+}
+
+.ds-field label {
+    font-weight: 700;
+}
+
+.ds-field input,
+.ds-field select {
+    width: 100%;
+    min-height: 3.5rem;
+    border: 1px solid var(--input);
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+    background: var(--card);
+    color: var(--foreground);
+    font: inherit;
+}
+
+.ds-field input:focus-visible,
+.ds-field select:focus-visible {
+    outline: 0;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 13%, transparent);
+}
+
+.ds-color-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.ds-color-swatch {
+    min-height: 6.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid var(--foreground);
+    border-radius: 1rem;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+.ds-color-swatch code {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.ds-color-background { background: var(--background); color: var(--foreground); }
+.ds-color-primary { background: var(--primary); color: var(--primary-foreground); }
+.ds-color-signal { background: var(--signal); color: var(--signal-foreground); }
+.ds-color-card { background: var(--card); color: var(--foreground); }
+
+.ds-item-card {
+    width: min(100%, 23rem);
+    min-height: 13.75rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    transition: transform 170ms ease, box-shadow 170ms ease;
+}
+
+.ds-item-card:hover {
+    transform: translateY(-4px);
+}
+
+.ds-item-card h3 {
+    margin: 1.25rem 0 0.5rem;
+    font-size: 1.25rem;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+}
+
+.ds-item-location {
+    margin: 0 0 1rem;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+.ds-item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
+    border-top: 2px dashed var(--border);
+    padding-top: 1rem;
+}
+
+.ds-item-reference {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+}
+
+.ds-item-footer a {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.ds-item-footer a:hover {
+    color: var(--signal);
+}
+
+.ds-upload-panel h3 {
+    margin-bottom: 1rem;
+}
+
+.ds-photo-drop {
+    position: relative;
+    min-height: 13rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border: 1px dashed var(--input);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    background: color-mix(in oklab, var(--secondary) 55%, var(--card));
+    color: var(--foreground);
+    text-align: center;
+}
+
+.ds-photo-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.ds-photo-input:focus-visible + label {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+}
+
+.ds-camera-icon {
+    color: var(--muted-foreground);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.ds-photo-drop > span:not(.ds-camera-icon) {
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+}
+
+.ds-photo-drop-error {
+    border-color: var(--destructive);
+    background: color-mix(in oklab, var(--destructive) 5%, var(--card));
+}
+
+.ds-photo-drop-error .ds-camera-icon,
+.ds-error-message {
+    color: var(--destructive);
+}
+
+.ds-help,
+.ds-error-message {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+}
+
+.ds-help {
+    color: var(--muted-foreground);
+}
+
+@media (max-width: 50rem) {
+    .ds-grid-three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ds-grid-three > :last-child {
+        grid-column: 1 / -1;
+    }
+
+    .ds-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 38rem) {
+    .ds-grid-three,
+    .ds-grid-two,
+    .ds-color-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-grid-three > :last-child {
+        grid-column: auto;
+    }
+
+    .ds-section {
+        margin-block: 2.25rem;
+    }
+
+    .ds-color-swatch {
+        min-height: 5.5rem;
+    }
+}
