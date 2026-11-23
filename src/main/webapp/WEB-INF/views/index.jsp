@@ -64,9 +64,20 @@
                     <h2 id="items-title">Itens cadastrados</h2>
                 </div>
                 <div class="category-chips" role="group" aria-label="Filtrar por categoria">
-                    <button class="category-chip is-active" type="button" data-category-filter="Todos" aria-pressed="true">Todos</button>
+                    <button class="category-chip is-active" type="button" data-category-filter="Todos" aria-pressed="true"><svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Todos</span></button>
                     <c:forEach var="categoria" items="${categorias}">
-                        <button class="category-chip" type="button" data-category-filter="<c:out value='${categoria.name()}'/>" aria-pressed="false"><c:out value="${categoria.rotulo}"/></button>
+                        <button class="category-chip" type="button" data-category-filter="<c:out value='${categoria.name()}'/>" aria-pressed="false">
+                            <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <c:choose>
+                                    <c:when test="${categoria.name() eq 'CELULAR'}"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></c:when>
+                                    <c:when test="${categoria.name() eq 'CHAVES'}"><circle cx="8" cy="8" r="4"/><path d="m11 11 9 9m-3-3 2-2m-5-1 2-2"/></c:when>
+                                    <c:when test="${categoria.name() eq 'DOCUMENTOS'}"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></c:when>
+                                    <c:when test="${categoria.name() eq 'BOLSAS'}"><rect x="5" y="7" width="14" height="14" rx="3"/><path d="M9 7V5a3 3 0 0 1 6 0v2M8 14h8v4H8z"/></c:when>
+                                    <c:when test="${categoria.name() eq 'ACESSORIOS'}"><circle cx="12" cy="12" r="7"/><path d="m12 3 2 2-2 2-2-2 2-2Z"/></c:when>
+                                    <c:otherwise><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></c:otherwise>
+                                </c:choose>
+                            </svg><span><c:out value="${categoria.rotulo}"/></span>
+                        </button>
                     </c:forEach>
                 </div>
             </div>
