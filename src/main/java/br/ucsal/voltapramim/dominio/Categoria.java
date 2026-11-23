@@ -7,6 +7,7 @@ public enum Categoria {
     private final String rotulo;
     Categoria(String rotulo) { this.rotulo = rotulo; }
     public String getRotulo() { return rotulo; }
+    public boolean aceitaFoto() { return this != DOCUMENTOS; }
 
     public static Categoria de(String valor) {
         if (valor == null || valor.isBlank()) throw new IllegalArgumentException("Selecione uma categoria.");

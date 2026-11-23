@@ -18,6 +18,10 @@
     <servlet>
         <servlet-name>frontController</servlet-name>
         <servlet-class>br.ucsal.voltapramim.web.FrontControllerServlet</servlet-class>
+        <multipart-config>
+            <max-file-size>5242880</max-file-size>
+            <max-request-size>6291456</max-request-size>
+        </multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>frontController</servlet-name>
@@ -27,6 +31,7 @@
         <url-pattern>/buscar</url-pattern>
         <url-pattern>/achei</url-pattern>
         <url-pattern>/itens/*</url-pattern>
+        <url-pattern>/fotos/*</url-pattern>
         <url-pattern>/design-system</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
