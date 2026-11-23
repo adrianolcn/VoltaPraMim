@@ -1,0 +1,460 @@
+.operations-page {
+    padding-bottom: 2rem;
+}
+
+.ops-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.ops-heading h1,
+.ops-login-card h1 {
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.055em;
+}
+
+.ops-heading .eyebrow,
+.ops-login-card .eyebrow {
+    margin-bottom: 0.4rem;
+}
+
+.ops-intro,
+.ops-login-description {
+    max-width: 42rem;
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 1.05rem;
+}
+
+.ops-heading form {
+    flex: 0 0 auto;
+}
+
+.ops-button {
+    min-height: 2.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border: 2px solid var(--foreground);
+    border-radius: 999px;
+    padding: 0.65rem 1.1rem;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 150ms ease, background-color 150ms ease, color 150ms ease;
+}
+
+.ops-button:hover {
+    transform: translateY(-2px);
+}
+
+.ops-button-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.ops-button-primary:hover {
+    background: var(--foreground);
+    color: var(--primary-foreground);
+}
+
+.ops-button-quiet {
+    background: var(--card);
+    color: var(--foreground);
+}
+
+.ops-button-quiet:hover {
+    background: var(--muted);
+    color: var(--foreground);
+}
+
+.ops-feedback {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin: 0 0 1.25rem;
+    border: 1px solid color-mix(in oklab, var(--success) 40%, var(--border));
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    background: color-mix(in oklab, var(--success) 10%, var(--card));
+    color: var(--foreground);
+    font-weight: 600;
+}
+
+.ops-feedback > span {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    flex: 0 0 1.5rem;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    font-size: 0.85rem;
+}
+
+.ops-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.ops-summary-card {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: 1rem;
+    border: 2px solid var(--foreground);
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    background: var(--card);
+    box-shadow: var(--shadow-tag);
+}
+
+.ops-summary-label {
+    align-self: center;
+    font-weight: 700;
+}
+
+.ops-summary-card strong {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    letter-spacing: -0.06em;
+    line-height: 1;
+}
+
+.ops-summary-note {
+    grid-column: 1;
+    margin-top: 0.4rem;
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+}
+
+.ops-summary-waiting { border-top: 5px solid var(--signal); }
+.ops-summary-available { border-top: 5px solid var(--success); }
+.ops-summary-returned { border-top: 5px solid var(--muted-foreground); }
+
+.ops-section {
+    margin-block: 2.75rem;
+}
+
+.ops-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ops-section-heading .eyebrow {
+    margin-bottom: 0.25rem;
+}
+
+.ops-section-heading h2 {
+    margin: 0;
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
+    letter-spacing: -0.04em;
+}
+
+.ops-count {
+    flex: 0 0 auto;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    background: var(--muted);
+    color: var(--muted-foreground);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.ops-list {
+    overflow: hidden;
+    border: 2px solid var(--foreground);
+    border-radius: 1.25rem;
+    padding-inline: 1.25rem;
+    background: var(--card);
+    box-shadow: var(--shadow-tag);
+}
+
+.ops-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.25rem;
+}
+
+.ops-item + .ops-item,
+.ops-history-item + .ops-history-item {
+    border-top: 1px solid var(--border);
+}
+
+.ops-item-info {
+    min-width: 0;
+}
+
+.ops-reference {
+    display: inline-block;
+    color: var(--muted-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+}
+
+.ops-item-info h3,
+.ops-history-item h3 {
+    margin: 0.3rem 0;
+    font-size: 1.2rem;
+    letter-spacing: -0.03em;
+}
+
+.ops-item-info h3 a {
+    color: var(--foreground);
+    text-decoration: none;
+    text-underline-offset: 0.2em;
+}
+
+.ops-item-info h3 a:hover,
+.ops-item-info h3 a:focus-visible {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.ops-item-info p,
+.ops-history-item p {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+}
+
+.ops-item form {
+    flex: 0 0 auto;
+}
+
+.ops-return-form {
+    display: grid;
+    justify-items: start;
+    gap: 0.75rem;
+}
+
+.ops-confirm-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    max-width: 19rem;
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    line-height: 1.35;
+    cursor: pointer;
+}
+
+.ops-confirm-check input {
+    width: 1.1rem;
+    height: 1.1rem;
+    min-height: 1.1rem;
+    flex: 0 0 1.1rem;
+    margin: 0.1rem 0 0;
+    padding: 0;
+    accent-color: var(--primary);
+}
+
+.ops-empty {
+    margin: 0;
+    padding-block: 1.5rem;
+    color: var(--muted-foreground);
+}
+
+.ops-history-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.1rem;
+}
+
+.ops-history-check {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    font-weight: 800;
+}
+
+.ops-history-status {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.ops-login-page {
+    min-height: 60vh;
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    padding-top: 1rem;
+}
+
+.ops-back-link {
+    width: min(100%, 34rem);
+    margin-bottom: 1rem;
+    color: var(--muted-foreground);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.ops-back-link:hover {
+    color: var(--primary);
+}
+
+.ops-login-card {
+    width: min(100%, 34rem);
+    border: 2px solid var(--foreground);
+    border-radius: 1.5rem;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    background: var(--card);
+    box-shadow: var(--shadow-tag);
+}
+
+.ops-login-mark {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.5rem;
+    border: 2px solid var(--foreground);
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.ops-login-card h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+}
+
+.ops-login-description {
+    margin-bottom: 1.5rem;
+}
+
+.ops-login-error {
+    margin: 0 0 1rem;
+    border: 1px solid var(--destructive);
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+    background: color-mix(in oklab, var(--destructive) 6%, var(--card));
+    color: var(--destructive);
+}
+
+.ops-login-form {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.ops-login-form label {
+    font-weight: 700;
+}
+
+.ops-login-form input {
+    width: 100%;
+    min-height: 3.5rem;
+    border: 1px solid var(--input);
+    border-radius: 1rem;
+    padding: 0.85rem 1rem;
+    background: var(--card);
+    color: var(--foreground);
+    font: inherit;
+}
+
+.ops-login-form .ops-button {
+    justify-self: start;
+    margin-top: 0.5rem;
+}
+
+.ops-login-note {
+    margin: 1.5rem 0 0;
+    border-left: 4px solid var(--signal);
+    padding: 0.75rem 1rem;
+    background: var(--muted);
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+}
+
+.ops-login-note code {
+    color: var(--foreground);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 48rem) {
+    .ops-summary {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .ops-summary-card {
+        padding: 1rem 1.1rem;
+    }
+
+    .ops-summary-card strong {
+        font-size: 2rem;
+    }
+
+    .ops-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .ops-item form,
+    .ops-item .ops-button {
+        width: 100%;
+    }
+
+    .ops-return-form {
+        justify-items: stretch;
+    }
+}
+
+@media (max-width: 36rem) {
+    .ops-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .ops-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .ops-list {
+        padding-inline: 1rem;
+    }
+
+    .ops-history-item {
+        grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .ops-history-status {
+        grid-column: 2;
+        justify-self: start;
+    }
+}

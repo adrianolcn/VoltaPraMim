@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel de Operações — Antes e Depois</title>
+    <style>
+        :root {
+            --ink: #15352b;
+            --muted: #5b746b;
+            --paper: #f7f1e4;
+            --card: #fffdf9;
+            --line: #d9ded7;
+            --accent: #f36a16;
+            --green: #0b4b38;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font: 15px/1.5 Arial, sans-serif;
+        }
+        main { width: min(100%, 920px); margin: 0 auto; padding: 34px 42px; }
+        header { border-bottom: 2px solid var(--ink); padding-bottom: 18px; margin-bottom: 22px; }
+        .eyebrow { margin: 0 0 5px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+        h1 { margin: 0; font-size: 29px; letter-spacing: -.04em; }
+        .subtitle { margin: 5px 0 0; color: var(--muted); }
+        h2 { margin: 0 0 10px; font-size: 19px; letter-spacing: -.025em; }
+        h3 { margin: 0 0 4px; font-size: 14px; }
+        p { margin: 0 0 10px; }
+        .intro { color: var(--muted); margin-bottom: 20px; }
+        .comparison { margin: 15px 0 20px; }
+        figure { margin: 0 0 14px; }
+        figure img { display: block; width: auto; max-width: 100%; height: auto; margin: 0 auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+        .dashboard-before img { max-height: 65mm; }
+        .dashboard-after img { max-height: 100mm; }
+        .login-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; margin: 18px 0; }
+        .login-figures img { width: 100%; }
+        figcaption { margin-top: 5px; color: var(--muted); font-size: 11px; text-align: left; }
+        .tag { display: inline-block; margin-bottom: 6px; border-radius: 999px; padding: 3px 9px; background: var(--muted); color: white; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+        .tag.before { background: #78827d; }
+        .tag.after { background: var(--green); }
+        .note { border-left: 4px solid var(--accent); padding: 9px 12px; background: #eee6d6; color: var(--muted); font-size: 12px; }
+        .highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 18px; margin: 13px 0 18px; }
+        .highlight { border-top: 1px solid var(--line); padding-top: 7px; }
+        .highlight strong { color: var(--green); }
+        .preserved { margin-top: 15px; border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; background: var(--card); font-size: 12px; }
+        .preserved strong { color: var(--green); }
+        .page-break { break-before: page; }
+        footer { margin-top: 18px; padding-top: 9px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+        @page { size: A4; margin: 12mm; }
+        @media print {
+            body { background: white; font-size: 13px; }
+            main { width: auto; padding: 0; }
+            header { margin-bottom: 16px; }
+            .page-break { break-before: page; }
+            figure, .preserved, .note { break-inside: avoid; }
+        }
+        @media screen and (max-width: 650px) {
+            main { padding: 22px 16px; }
+            .login-figures, .highlights { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <p class="eyebrow">VoltaPraMim · UCSal</p>
+        <h1>Painel de Operações — Antes e Depois</h1>
+        <p class="subtitle">Redesign visual da área de atendimento · 23 de novembro de 2026</p>
+    </header>
+
+    <p class="intro">O painel foi reorganizado para aproximar a experiência administrativa da linguagem visual usada na página inicial e no cadastro: fundo creme, cartões claros, contornos verde-escuros, sombras marcadas e laranja para chamar atenção aos estados pendentes.</p>
+
+    <section aria-labelledby="dashboard-title">
+        <h2 id="dashboard-title">Painel autenticado</h2>
+        <div class="comparison">
+            <figure class="dashboard-before">
+                <span class="tag before">Antes · sem a folha visual aplicada</span>
+                <img src="imagens/redesign-operacoes/painel-antes.png" alt="Painel de operações antes: contadores e itens aparecem como texto corrido, com botões padrão do navegador.">
+                <figcaption>Captura enviada durante a revisão: a estrutura de conteúdo já estava presente, mas o CSS dedicado não havia sido carregado.</figcaption>
+            </figure>
+            <figure class="dashboard-after">
+                <span class="tag after">Depois · painel repaginado</span>
+                <img src="imagens/redesign-operacoes/painel-depois.png" alt="Painel de operações depois: cartões de resumo, etapas em painéis e botões verde-escuros.">
+                <figcaption>As contagens resumem cada etapa; listas, ações e estados vazios aparecem em painéis alinhados ao restante do produto.</figcaption>
+            </figure>
+        </div>
+
+    </section>
+
+    <section class="page-break" aria-labelledby="login-title">
+        <h2 id="login-title">Acesso ao painel</h2>
+        <p class="intro">A tela de login também passou a usar um cartão centralizado, com hierarquia para título, campo de senha, retorno de sessão e informação sobre a variável de ambiente.</p>
+
+        <div class="login-figures">
+            <figure>
+                <span class="tag before">Antes</span>
+                <img src="imagens/redesign-operacoes/login-antes.png" alt="Tela de login antes: conteúdo sem cartão, campo de largura total e botão padrão.">
+                <figcaption>Formulário sem o tratamento visual da área de operações.</figcaption>
+            </figure>
+            <figure>
+                <span class="tag after">Depois</span>
+                <img src="imagens/redesign-operacoes/login-depois.png" alt="Tela de login depois: formulário em cartão centralizado, com botão verde e aviso em destaque.">
+                <figcaption>Cartão centralizado, controles arredondados e mensagens em estados visíveis.</figcaption>
+            </figure>
+        </div>
+
+        <h2>Mudanças principais</h2>
+        <div class="highlights">
+            <div class="highlight"><strong>Resumo rápido.</strong> Contadores destacam itens aguardando entrega, disponíveis e devolvidos.</div>
+            <div class="highlight"><strong>Fluxo organizado.</strong> Cada etapa tem título, quantidade e lista própria.</div>
+            <div class="highlight"><strong>Ações claras.</strong> Botões de recebimento e devolução ficam junto ao item correspondente.</div>
+            <div class="highlight"><strong>Adaptação móvel.</strong> As ações passam para baixo do item em telas estreitas.</div>
+        </div>
+
+        <aside class="preserved"><strong>Fluxos preservados:</strong> autenticação por senha de demonstração, token CSRF nos formulários, confirmação presencial de posse antes de registrar a devolução e encerramento da sessão.</aside>
+        <p class="note" style="margin-top: 13px">As capturas “antes” mostram o estado sem o CSS dedicado aplicado; não são uma reprodução da versão histórica anterior à mudança do HTML. As capturas “depois” foram feitas localmente com dados de demonstração.</p>
+    </section>
+
+    <footer>Documento de comparação visual · VoltaPraMim · Capturas de prévia local</footer>
+</main>
+</body>
+</html>
