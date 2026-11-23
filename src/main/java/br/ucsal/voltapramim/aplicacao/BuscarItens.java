@@ -27,6 +27,13 @@ public final class BuscarItens {
     }
 
     public List<Item> executar(ConsultaItens consultaItens) {
-        return List.of();
+        MotorDeBusca estrategia = consultaItens.texto().isBlank()
+                ? recentes
+                : porRelevancia;
+
+        return estrategia.buscar(
+                repositorio.listarAtivos(),
+                consultaItens
+        );
     }
 }
