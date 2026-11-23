@@ -1,7 +1,7 @@
 package br.ucsal.voltapramim.dominio;
 
 public enum Categoria {
-    CELULAR("Celulares e eletrônicos"), CHAVES("Chaves"), DOCUMENTOS("Documentos"),
+    CELULAR("Eletrônicos"), CHAVES("Chaves"), DOCUMENTOS("Documentos"),
     BOLSAS("Bolsas e mochilas"), ACESSORIOS("Acessórios"), OUTROS("Outros");
 
     private final String rotulo;
