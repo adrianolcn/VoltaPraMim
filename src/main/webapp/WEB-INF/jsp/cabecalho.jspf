@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${cssTokens}">
     <link rel="stylesheet" href="${cssApp}">
+    <c:if test="${cssDesignSystem}">
+        <c:url var="cssDesignSystemUrl" value="/static/css/design-system.css" />
+        <link rel="stylesheet" href="${cssDesignSystemUrl}">
+    </c:if>
 </head>
 <body>
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>

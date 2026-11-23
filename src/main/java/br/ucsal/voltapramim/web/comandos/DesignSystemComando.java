@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public final class DesignSystemComando implements ComandoWeb {
     @Override public void executar(HttpServletRequest request, HttpServletResponse response) throws jakarta.servlet.ServletException, IOException {
+        request.setAttribute("tituloPagina", "Design System · VoltaPraMim");
+        request.setAttribute("cssDesignSystem", Boolean.TRUE);
         Views.render(request, response, "design-system");
     }
 }

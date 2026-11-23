@@ -1,100 +1,125 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="cabecalho.jspf" %>
-<section class="page-intro">
-    <p class="eyebrow">Interface</p>
-    <h1>Design System</h1>
-    <p>Componentes iniciais do protótipo, com cores, tipografia, foco e estados visíveis.</p>
-</section>
-<section class="design-samples">
-    <div class="sample-card"><h2>Botões</h2><button class="button" type="button">Ação principal</button> <a class="button button-secondary" href="<c:url value='/achei' />">Ação secundária</a></div>
-    <div class="sample-card"><h2>Estados</h2><span class="badge badge-pending">◷ Aguardando entrega</span></div>
-    <div class="sample-card"><h2>Campos</h2><label for="sample-field">Campo de texto</label><input id="sample-field" type="text" placeholder="Exemplo"></div>
-</section>
+<div class="design-system-page">
+    <section class="page-intro">
+        <p class="eyebrow">Interface</p>
+        <h1>Design System</h1>
+        <p>Componentes e estados usados atualmente no VoltaPraMim.</p>
+    </section>
 
-<section class="design-section" aria-labelledby="upload-title">
-    <p class="eyebrow">Componente</p>
-    <h2 id="upload-title">Upload de foto</h2>
-    <p>
-        O campo aceita imagem opcional para itens comuns.
-        Documentos não devem receber foto.
-    </p>
-
-    <div class="design-examples">
-        <div class="design-example">
-            <h3>Estado padrão</h3>
-
-            <div class="field">
-                <label for="foto-exemplo">
-                    Foto do objeto
-                    <span class="muted">(opcional)</span>
-                </label>
-
-                <input
-                        id="foto-exemplo"
-                        class="file-input"
-                        name="foto"
-                        type="file"
-                        accept="image/jpeg,image/png"
-                        aria-describedby="foto-ajuda">
-
-                <p id="foto-ajuda" class="form-note">
-                    JPEG ou PNG de até 5 MiB.
-                </p>
+    <section class="ds-section" aria-labelledby="ds-foundations-title">
+        <div class="ds-section-heading">
+            <div>
+                <p class="eyebrow">Fundamentos</p>
+                <h2 id="ds-foundations-title">Cores da interface</h2>
             </div>
+            <p>Uma paleta quente com verde escuro e laranja para destacar ações e estados.</p>
         </div>
+        <div class="ds-color-grid">
+            <div class="ds-color-swatch ds-color-background"><span>Fundo</span><code>--background</code></div>
+            <div class="ds-color-swatch ds-color-primary"><span>Primária</span><code>--primary</code></div>
+            <div class="ds-color-swatch ds-color-signal"><span>Sinalização</span><code>--signal</code></div>
+            <div class="ds-color-swatch ds-color-card"><span>Cartão</span><code>--card</code></div>
+        </div>
+    </section>
 
-        <div class="design-example">
-            <h3>Estado de erro</h3>
-
-            <div class="field field-error">
-                <label for="foto-invalida">
-                    Foto do objeto
-                    <span class="muted">(opcional)</span>
-                </label>
-
-                <input
-                        id="foto-invalida"
-                        class="file-input"
-                        name="foto"
-                        type="file"
-                        aria-invalid="true"
-                        aria-describedby="foto-erro">
-
-                <p id="foto-erro" class="field-message" role="alert">
-                    Envie somente uma imagem JPEG ou PNG de até 5 MiB.
-                </p>
+    <section class="ds-section" aria-labelledby="ds-components-title">
+        <div class="ds-section-heading">
+            <div>
+                <p class="eyebrow">Componentes</p>
+                <h2 id="ds-components-title">Ações, status e campos</h2>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="design-section" aria-labelledby="status-title">
-    <p class="eyebrow">Componente</p>
-    <h2 id="status-title">Status do item</h2>
-    <p>
-        Cada status possui texto e cor. A cor nunca é a única forma
-        de comunicar o estado.
-    </p>
-
-    <div class="design-examples">
-        <div class="design-example">
-            <span class="badge badge-pending">
-                Aguardando entrega
-            </span>
+            <p>Exemplos seguem os estilos aplicados na busca, no cadastro e nos cartões de itens.</p>
         </div>
 
-        <div class="design-example">
-            <span class="badge badge-available">
-                Disponível para retirada
-            </span>
-        </div>
+        <div class="ds-grid ds-grid-three">
+            <article class="ds-panel">
+                <h3>Botões</h3>
+                <div class="ds-button-stack">
+                    <button class="ds-button ds-button-primary" type="button">Cadastrar objeto <span aria-hidden="true">→</span></button>
+                    <button class="ds-button ds-button-secondary" type="button">Ação secundária</button>
+                    <button class="ds-filter-chip" type="button" aria-pressed="true"><span aria-hidden="true">▦</span> Todos</button>
+                </div>
+            </article>
 
-        <div class="design-example">
-            <span class="badge badge-returned">
-                Devolvido
-            </span>
+            <article class="ds-panel">
+                <h3>Status do item</h3>
+                <div class="ds-status-stack">
+                    <span class="status-badge status-waiting"><span class="status-dot" aria-hidden="true"></span>Aguardando entrega</span>
+                    <span class="status-badge status-available"><span class="status-dot" aria-hidden="true"></span>Disponível para retirada</span>
+                    <span class="status-badge status-returned"><span class="status-dot" aria-hidden="true"></span>Devolvido</span>
+                </div>
+            </article>
+
+            <article class="ds-panel">
+                <h3>Campos</h3>
+                <div class="ds-field">
+                    <label for="ds-text">Nome do objeto</label>
+                    <input id="ds-text" type="text" placeholder="Ex.: garrafa térmica verde">
+                </div>
+                <div class="ds-field">
+                    <label for="ds-category">Categoria</label>
+                    <select id="ds-category">
+                        <option>Selecione a categoria</option>
+                        <option>Eletrônicos</option>
+                    </select>
+                </div>
+            </article>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="ds-section" aria-labelledby="ds-card-title">
+        <div class="ds-section-heading">
+            <div>
+                <p class="eyebrow">Componente</p>
+                <h2 id="ds-card-title">Cartão de item</h2>
+            </div>
+            <p>O estado, o local e a referência ficam visíveis antes de abrir os detalhes.</p>
+        </div>
+        <article class="ds-item-card">
+            <div class="ds-item-meta">
+                <span class="status-badge status-waiting"><span class="status-dot" aria-hidden="true"></span>Aguardando entrega</span>
+            </div>
+            <h3>Garrafa térmica verde</h3>
+            <p class="ds-item-location"><span aria-hidden="true">📍</span> Biblioteca · Outros</p>
+            <div class="ds-item-footer">
+                <span class="ds-item-reference">VPM-R7MFP</span>
+                <a href="#ds-card-title">Ver detalhes <span aria-hidden="true">→</span></a>
+            </div>
+        </article>
+    </section>
+
+    <section class="ds-section" aria-labelledby="ds-upload-title">
+        <div class="ds-section-heading">
+            <div>
+                <p class="eyebrow">Componente</p>
+                <h2 id="ds-upload-title">Upload de foto</h2>
+            </div>
+            <p>O envio é opcional e aceita JPEG ou PNG de até 5 MiB. Documentos não recebem foto.</p>
+        </div>
+        <div class="ds-grid ds-grid-two">
+            <article class="ds-panel ds-upload-panel">
+                <h3>Estado padrão</h3>
+                <div class="ds-photo-drop">
+                    <span class="ds-camera-icon" aria-hidden="true">▧</span>
+                    <strong>Adicione uma foto do objeto</strong>
+                    <span>ou arraste uma imagem aqui</span>
+                    <input class="ds-photo-input" id="ds-photo" type="file" accept="image/jpeg,image/png" aria-describedby="ds-photo-help">
+                    <label class="ds-button ds-button-secondary" for="ds-photo">Escolher foto</label>
+                </div>
+                <p class="ds-help" id="ds-photo-help">JPEG ou PNG · Até 5 MiB</p>
+            </article>
+            <article class="ds-panel ds-upload-panel">
+                <h3>Estado de erro</h3>
+                <div class="ds-photo-drop ds-photo-drop-error" aria-invalid="true">
+                    <span class="ds-camera-icon" aria-hidden="true">▧</span>
+                    <strong>Não foi possível usar este arquivo</strong>
+                    <span>Escolha uma imagem JPEG ou PNG de até 5 MiB.</span>
+                </div>
+                <p class="ds-error-message">O formato ou tamanho do arquivo não é permitido.</p>
+            </article>
+        </div>
+    </section>
+</div>
 
 <%@ include file="rodape.jspf" %>
