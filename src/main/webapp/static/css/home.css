@@ -211,8 +211,8 @@ h3 {
 }
 
 .search-box:focus-within {
-    outline: 3px solid var(--ring);
-    outline-offset: 3px;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .found-tag {
@@ -537,8 +537,8 @@ h3 {
 }
 
 :focus-visible {
-    outline: 3px solid var(--ring);
-    outline-offset: 3px;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 @media (min-width: 40rem) {

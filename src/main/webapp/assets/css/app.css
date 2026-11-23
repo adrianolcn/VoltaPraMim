@@ -25,7 +25,7 @@ h2 { margin-bottom: .25rem; font-size: clamp(1.35rem, 3vw, 1.8rem); letter-spaci
 .search-bar input { flex: 1; }
 .button { display: inline-flex; justify-content: center; align-items: center; min-height: 46px; padding: .72rem 1.15rem; border: 1px solid var(--color-brand); border-radius: var(--radius-sm); background: var(--color-brand); color: var(--primary-foreground); font-weight: 700; text-decoration: none; cursor: pointer; }
 .button:hover { border-color: var(--color-brand-dark); background: var(--color-brand-dark); color: var(--primary-foreground); }
-.button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
+.button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .button-small { min-height: 38px; padding: .45rem .8rem; font-size: .9rem; }
 .button-secondary { background: var(--transparent); color: var(--color-brand); }
 .button-secondary:hover { background: var(--secondary); color: var(--color-brand-dark); }
@@ -93,7 +93,7 @@ textarea { resize: vertical; }
 }
 
 .file-input:focus-visible {
-  outline: 3px solid var(--ring);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-color: var(--color-brand);
 }
