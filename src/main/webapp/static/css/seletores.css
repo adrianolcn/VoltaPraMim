@@ -1,0 +1,35 @@
+select {
+    min-height: 3.5rem;
+    border: 1px solid var(--input);
+    border-radius: var(--radius-lg);
+    padding: .85rem 1rem;
+    background: var(--card);
+    color: var(--foreground);
+    font: inherit;
+}
+select:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Navegadores com suporte permitem personalizar a lista nativa sem perder
+   a navegação por teclado e a validação do formulário. */
+@supports (appearance: base-select) {
+    select, select::picker(select) { appearance: base-select; }
+    select { align-items: center; gap: .75rem; cursor: pointer; }
+    select::picker-icon { color: var(--primary); transition: rotate .15s ease; }
+    select:open::picker-icon { rotate: 180deg; }
+    select::picker(select) {
+        position-area: bottom;
+        position-try-fallbacks: none;
+        max-height: min(15rem, 45vh);
+        overflow-y: auto;
+        border: 1px solid var(--input);
+        border-radius: var(--radius-lg);
+        margin-top: .35rem;
+        padding: .3rem;
+        background: var(--card);
+        box-shadow: 2px 3px 0 var(--border);
+    }
+    select option { padding: .5rem .75rem; border-radius: var(--radius-sm); color: var(--foreground); }
+    select option:hover, select option:focus { background: var(--muted); }
+    select option:checked { background: var(--secondary); color: var(--secondary-foreground); font-weight: 600; }
+    select option::checkmark { color: var(--primary); }
+}
